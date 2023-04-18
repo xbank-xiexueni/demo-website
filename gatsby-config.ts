@@ -2,14 +2,11 @@ import { GatsbyConfig } from 'gatsby';
 
 const config: GatsbyConfig = {
   siteMetadata: {
-    title: `xBank - Web3 and Cryptos All-In-One Portal`,
-    siteUrl: `https://www.xbank.plus`,
+    title: `PrimeX - Institutional-grade solutions with PrimeX.`,
     author: 'xBank',
-    description:
-      'xBank is the first Web3 and Crypto platform that takes you into the best Web3 projects & cryptos including NFT, Game, DAO, digital collectibles and Web3 community. ',
-    twitterUsername: `xBank_Official`,
-    keyword:
-      'best web 3 projects,web 3 benefits,web3 community,xbank3.0,xbank,xbank web3,xbank plus',
+    description: 'Institutional-grade solutions with PrimeX.',
+    twitterUsername: `PrimeX`,
+    keyword: 'PrimeX',
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
   // If you use VSCode you can also use the GraphQL plugin

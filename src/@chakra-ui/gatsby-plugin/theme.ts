@@ -1,4 +1,4 @@
-import { extendTheme, StyleFunctionProps } from '@chakra-ui/react';
+import { extendTheme } from '@chakra-ui/react';
 
 const breakpoints = {
   xs: '345px',
@@ -9,26 +9,71 @@ const breakpoints = {
   '2xl': '1920px',
 };
 
-const theme = {
+// const theme = {
+//   config: {
+//     initialColorMode: 'dark',
+//     useSystemColorMode: false,
+//   },
+//   colors: {
+//     primary: '#0000FF',
+//     secondary: '#E802E5',
+//     // 提示文字
+//     font: {
+//       primary: '#FFFFFF',
+//       tip: '#566E8C',
+//     },
+//     bg: {
+//       gray: '#F2F5FA',
+//     },
+//     border: '#EFF4FB',
+//   },
+//   breakpoints,
+//   // fonts: {
+//   //   body: 'HarmonyOS',
+//   //   heading: 'HarmonyOS',
+//   //   mono: 'HarmonyOS',
+//   // },
+//   global: {
+//     html: {
+//       color: 'white',
+//     },
+//   },
+// };
+const theme = extendTheme({
+  config: {
+    initialColorMode: 'dark',
+    // useSystemColorMode: false,
+  },
   colors: {
-    primary: '#0000FF',
-    secondary: '#E802E5',
-    // 提示文字
     font: {
-      primary: '#00000F',
-      tip: '#566E8C',
+      primary: '#EBF0FF',
+      secondary: '#939393',
+      tip: '#717A7B',
     },
-    bg: {
-      gray: '#F2F5FA',
+    black: {
+      1: '#000D33',
+      2: '#05040A',
     },
-    border: '#EFF4FB',
+    green: {
+      1: '#01E0B5',
+    },
+    blue: {
+      1: '#002EAA',
+    },
   },
   breakpoints,
-  fonts: {
-    body: 'HarmonyOS',
-    heading: 'HarmonyOS',
-    mono: 'HarmonyOS',
+  styles: {
+    global: {
+      html: {
+        backgroundColor: 'black',
+        color: 'font.primary',
+      },
+      body: {
+        backgroundColor: 'black',
+        color: 'font.primary',
+      },
+    },
   },
-};
+});
 
-export default extendTheme(theme);
+export default theme;

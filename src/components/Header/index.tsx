@@ -1,40 +1,15 @@
-import {
-  Box,
-  Image,
-  Collapse,
-  Flex,
-  Text,
-  useDisclosure,
-  // Button,
-  // Drawer,
-  // DrawerOverlay,
-  // DrawerContent,
-  // DrawerCloseButton,
-  // DrawerBody,
-  // DrawerHeader,
-  Menu,
-  MenuList,
-  MenuGroup,
-  MenuItem,
-  MenuDivider,
-  MenuButton,
-  Divider,
-  Portal,
-} from '@chakra-ui/react';
+import { Box, Image, Flex, useDisclosure, Button } from '@chakra-ui/react';
 import React, { useCallback, useEffect, useState } from 'react';
 import MyContainer from '../container';
 import './index.scss';
-import MyMenu from './MyMenu';
-// import { StaticImage } from 'gatsby-plugin-image';
-import StickySummary from '../Summary/StickySummary';
 import {
   ABOUT_US_ID,
   COMMUNITY_ID,
   CONVERT_MONEY_ID,
   DISCOVER_WEB3_ID,
 } from '../../constants/ID';
-import ModalButton from '../ModalButton';
-import Icon from '../../images/xbank.png';
+import Icon from '../../images/headerIcon.png';
+import { navigate } from 'gatsby';
 
 const ARROW = (
   <svg
@@ -47,6 +22,8 @@ const ARROW = (
     <path d='M1 1L4 3L7 1' stroke='#00000F' />
   </svg>
 );
+
+const MENU_LIST = ['About us', 'Why PrimeX', 'How to trade with us', 'FAQs'];
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -100,318 +77,99 @@ const Header = () => {
   const { isOpen, onClose, onToggle } = useDisclosure();
 
   return (
-    <Box position={'sticky'} top={0} zIndex={21}>
-      <Box
-        bg='linear-gradient(270deg, #E404E6 0%, #5843F4 53.65%, #1EF6F0
-      100%)'
-        h={1}
-      />
-      <Box bg='#FFFFFF'>
-        <MyContainer>
-          <Flex justify={'space-between'} h={58} alignItems='center'>
-            <Flex>
-              <Flex
-                gap={2}
-                onClick={() => {
-                  if (isBrowser) {
-                    window?.scrollTo(0, 0);
-                  }
-                }}
-                alignItems='center'
-              >
-                <Image src={Icon} h={25} alt='icon' />
-                <Text color={'font.primary'} fontSize={30} fontWeight={500}>
-                  xBank
-                </Text>
-              </Flex>
-
-              <Flex
-                display={{
-                  xs: 'none',
-                  sm: 'flex',
-                }}
-              >
-                <Menu isOpen={currentOpen === 'product'}>
-                  <MenuButton
-                    ml={10}
-                    id='menu-button'
-                    onClick={() => {
-                      if (currentOpen === 'product') {
-                        setCurrentOpen(undefined);
-                      } else {
-                        setCurrentOpen('product');
-                      }
-                    }}
-                  >
-                    <Text display={'flex'} alignItems='center'>
-                      Products&nbsp;{ARROW}
-                    </Text>
-                  </MenuButton>
-                  <Portal>
-                    <MenuList zIndex={99}>
-                      {[
-                        {
-                          label: 'Discover Web3',
-                          cId: DISCOVER_WEB3_ID,
-                          onClick: () => {
-                            scrollTo(DISCOVER_WEB3_ID);
-                            setFocusId(DISCOVER_WEB3_ID);
-                            setCurrentOpen(undefined);
-                          },
-                        },
-                        {
-                          label: 'Convert Money',
-                          cId: CONVERT_MONEY_ID,
-                          onClick: () => {
-                            scrollTo(CONVERT_MONEY_ID);
-                            setFocusId(CONVERT_MONEY_ID);
-                            setCurrentOpen(undefined);
-                          },
-                        },
-                      ]?.map(({ label, onClick, cId }) => (
-                        <Box
-                          cursor={'pointer'}
-                          fontSize={16}
-                          color={focusId === cId ? 'primary' : 'font.primary'}
-                          onClick={() => {
-                            onClick();
-                            onClose();
-                          }}
-                          _hover={{
-                            color: 'primary',
-                          }}
-                          // color={}
-                          key={label}
-                          py={2}
-                          px={3}
-                          _active={{
-                            bg: 'bg.gray',
-                          }}
-                          bg={focusId === cId ? 'bg.gray' : '#FFFFFF'}
-                        >
-                          {label}
-                        </Box>
-                      ))}
-                    </MenuList>
-                  </Portal>
-                </Menu>
-
-                <Menu isOpen={currentOpen === 'company'}>
-                  <MenuButton
-                    ml={10}
-                    id='menu-button1'
-                    onClick={() => {
-                      if (currentOpen === 'company') {
-                        setCurrentOpen(undefined);
-                      } else {
-                        setCurrentOpen('company');
-                      }
-                    }}
-                  >
-                    <Text display={'flex'} alignItems='center'>
-                      Company&nbsp;{ARROW}
-                    </Text>
-                  </MenuButton>
-                  <Portal>
-                    <MenuList zIndex={99}>
-                      {[
-                        {
-                          label: 'About Us',
-                          cId: ABOUT_US_ID,
-                          onClick: () => {
-                            scrollTo(ABOUT_US_ID);
-                            setFocusId(ABOUT_US_ID);
-                            setCurrentOpen(undefined);
-                          },
-                        },
-                        {
-                          label: 'Community',
-                          cId: COMMUNITY_ID,
-                          onClick: () => {
-                            scrollTo(COMMUNITY_ID);
-                            setFocusId(COMMUNITY_ID);
-                            setCurrentOpen(undefined);
-                          },
-                        },
-                      ]?.map(({ label, onClick, cId }) => (
-                        <Box
-                          cursor={'pointer'}
-                          fontSize={16}
-                          onClick={() => {
-                            onClick();
-                            onClose();
-                          }}
-                          _hover={{
-                            color: 'primary',
-                          }}
-                          color={focusId === cId ? 'primary' : 'font.primary'}
-                          // color={}
-                          key={label}
-                          py={2}
-                          px={3}
-                          _active={{
-                            bg: 'bg.gray',
-                          }}
-                          bg={focusId === cId ? 'bg.gray' : '#FFFFFF'}
-                        >
-                          {label}
-                        </Box>
-                      ))}
-                    </MenuList>
-                  </Portal>
-                </Menu>
-              </Flex>
-            </Flex>
-            {/* <Button
-            display={{
-              xs: 'none',
-              sm: 'block',
+    <Box
+      position={'absolute'}
+      left={0}
+      right={0}
+      top={0}
+      bg='transparent'
+      zIndex={99}
+    >
+      <MyContainer>
+        <Flex
+          justify={'space-between'}
+          h={{
+            md: '152px',
+            sm: '90px',
+            xs: '90px',
+          }}
+          alignItems={'center'}
+        >
+          <Flex
+            gap={2}
+            onClick={() => {
+              if (isBrowser) {
+                window?.scrollTo(0, 0);
+              }
             }}
-            bg='secondary'
-            color='#FFF'
-            borderRadius={26}
-            h={'35px'}
+            alignItems='center'
           >
-            Get xBank
-          </Button> */}
-            <ModalButton
-              arrow={false}
-              title='Get xBank'
-              h={35}
-              display={{
-                xs: 'none',
-                sm: 'block',
-              }}
-              bg='secondary'
-              color='#FFF'
-              borderRadius={26}
-            />
-
-            <Menu isOpen={isOpen}>
-              <MenuButton
-                display={{
-                  md: 'none',
-                  xs: 'block',
-                  sm: 'block',
-                }}
-                bg='#FFFFFF'
-                as={Box}
-                cursor='pointer'
-                onClick={onToggle}
-              >
-                <svg
-                  width='40'
-                  height='40'
-                  viewBox='0 0 40 40'
-                  fill='none'
-                  xmlns='http://www.w3.org/2000/svg'
-                >
-                  <path d='M5 14H35' stroke='black' strokeWidth='3' />
-                  <path d='M5 26H35' stroke='black' strokeWidth='3' />
-                </svg>
-                {/* <Box onClick={onOpen} cursor={'pointer'}></Box> */}
-              </MenuButton>
-              <MenuList p={3}>
-                <Text fontWeight={700} fontSize={16}>
-                  Products
-                </Text>
-                <Box fontSize={14}>
-                  <Box
-                    py={2}
-                    onClick={() => {
-                      scrollTo(DISCOVER_WEB3_ID);
-                      setFocusId(DISCOVER_WEB3_ID);
-                      onClose();
-                    }}
-                    _active={{
-                      bg: 'bg.gray',
-                    }}
-                    bg={focusId === DISCOVER_WEB3_ID ? 'bg.gray' : '#FFFFFF'}
-                  >
-                    Discover Web3
-                  </Box>
-                  <Box
-                    py={2}
-                    onClick={() => {
-                      scrollTo(CONVERT_MONEY_ID);
-                      setFocusId(CONVERT_MONEY_ID);
-                      onClose();
-                    }}
-                    _active={{
-                      bg: 'bg.gray',
-                    }}
-                    bg={focusId === CONVERT_MONEY_ID ? 'bg.gray' : '#FFFFFF'}
-                  >
-                    Convert Money
-                  </Box>
-                </Box>
-
-                <Divider />
-                <Text pt={2} fontWeight={700}>
-                  Company
-                </Text>
-                <Box fontSize={14}>
-                  <Box
-                    py={2}
-                    onClick={() => {
-                      scrollTo(ABOUT_US_ID);
-                      setFocusId(ABOUT_US_ID);
-                      onClose();
-                    }}
-                    _active={{
-                      bg: 'bg.gray',
-                    }}
-                    bg={focusId === ABOUT_US_ID ? 'bg.gray' : '#FFFFFF'}
-                  >
-                    About Us
-                  </Box>
-                  <Box
-                    py={2}
-                    onClick={() => {
-                      scrollTo(COMMUNITY_ID);
-                      setFocusId(COMMUNITY_ID);
-                      onClose();
-                    }}
-                    _active={{
-                      bg: 'bg.gray',
-                    }}
-                    bg={focusId === COMMUNITY_ID ? 'bg.gray' : '#FFFFFF'}
-                  >
-                    Community
-                  </Box>
-                </Box>
-              </MenuList>
-            </Menu>
+            <Image src={Icon} h={25} alt='icon' />
           </Flex>
-        </MyContainer>
-      </Box>
 
-      <Box
-        display={{
-          md: 'block',
-          sm: 'none',
-          xs: 'none',
-        }}
-      >
-        <Collapse in={show} animateOpacity>
-          <StickySummary />
-        </Collapse>
-      </Box>
-      {/* 
-      <Drawer isOpen={isOpen} placement='right' onClose={onClose}>
-        <DrawerOverlay />
-        <DrawerContent>
-          <DrawerCloseButton />
-          <DrawerHeader display={'flex'} alignItems='center' gap={4}>
-            <Image src={Icon} h={25} />
-            <Text color={'font.primary'} fontSize={30} fontWeight={500}>
-              xBank
-            </Text>
-          </DrawerHeader>
-
-          <DrawerBody>1212</DrawerBody>
-        </DrawerContent>
-      </Drawer> */}
+          <Flex
+            alignItems={'center'}
+            gap={'60px'}
+            display={{
+              md: 'flex',
+              sm: 'none',
+              xs: 'none',
+            }}
+          >
+            {MENU_LIST.map((item) => (
+              <Box
+                key={item}
+                cursor={'pointer'}
+                fontSize={'12px'}
+                onClick={() => {
+                  navigate(`#${item.toLowerCase().replaceAll(' ', '-')}`);
+                }}
+              >
+                {item}
+              </Box>
+            ))}
+            <Button
+              borderRadius={26}
+              borderWidth={1}
+              borderColor={'font.primary'}
+              fontSize={'12px'}
+              px='16px'
+              py='12px'
+              bg='transparent'
+              _hover={{
+                backgroundColor: 'green.1',
+                borderColor: 'green.1',
+              }}
+            >
+              Get in Touch
+              <svg
+                width='16'
+                height='17'
+                viewBox='0 0 16 17'
+                fill='none'
+                xmlns='http://www.w3.org/2000/svg'
+              >
+                <g clipPath='url(#clip0_1_142)'>
+                  <path
+                    d='M4.22815 4.46632L4.22815 5.79568L9.49374 5.8004L3.75675 11.5374L4.69956 12.4802L10.4366 6.7432L10.4318 12.0088L11.7706 12.0088L11.7706 4.46632L4.22815 4.46632Z'
+                    fill='#EBF0FF'
+                  />
+                </g>
+                <defs>
+                  <clipPath id='clip0_1_142'>
+                    <rect
+                      width='16'
+                      height='16'
+                      fill='white'
+                      transform='translate(0 16.2375) rotate(-90)'
+                    />
+                  </clipPath>
+                </defs>
+              </svg>
+            </Button>
+          </Flex>
+        </Flex>
+      </MyContainer>
     </Box>
   );
 };
