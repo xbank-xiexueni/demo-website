@@ -13,7 +13,9 @@ import scrollJson from '../../constants/Scroll-helper.json';
 
 export const CONTENT1_HEIGHT = 982;
 const Content1 = () => {
+
   useLayoutEffect(() => {
+    console.log(typeof document,'typeof document ',typeof window)
     if (typeof document === 'undefined') return;
     const bgx = document.getElementById('bgx');
     if (!bgx) return;
