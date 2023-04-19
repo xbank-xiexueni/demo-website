@@ -36,7 +36,7 @@ const Header = () => {
             }}
             alignItems='center'
           >
-            <Image src={Icon} h={25} alt='icon' />
+            <Image src={Icon} h={'50px'} alt='icon' />
           </Flex>
 
           <Flex
