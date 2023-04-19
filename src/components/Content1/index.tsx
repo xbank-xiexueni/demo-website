@@ -23,7 +23,7 @@ const Content1 = () => {
       bgx.onmousemove = (e) => {
         let currX = cliX + (e.clientX - enterX) * 0.2;
         let currY = cliY + (e.clientY - enterY) * 0.2;
-        if (currX >= -150 && currX <= 0 && !!bgx) {
+        if (currX >= -100 && currX <= 0 && !!bgx) {
           // @ts-ignore
           bgx.style['background-position'] = `${currX}px ${currY}px`;
         }

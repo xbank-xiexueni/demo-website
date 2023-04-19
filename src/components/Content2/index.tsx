@@ -82,7 +82,7 @@ const Content2 = () => {
         }}
       >
         {/* 1 */}
-        <Fade bottom opposite cascade duration={1500} delay={200}>
+        <Fade bottom opposite cascade duration={1500} delay={50}>
           <Flex
             py={{
               md: '120px',

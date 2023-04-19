@@ -3,7 +3,7 @@ import { GatsbyConfig } from 'gatsby';
 const config: GatsbyConfig = {
   siteMetadata: {
     title: `PrimeX - Institutional-grade solutions with PrimeX.`,
-    author: 'xBank',
+    author: 'PrimeX',
     description: 'Institutional-grade solutions with PrimeX.',
     twitterUsername: `PrimeX`,
     keyword: 'PrimeX',
@@ -21,8 +21,8 @@ const config: GatsbyConfig = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `xBank`,
-        short_name: `xBank`,
+        name: `PrimeX`,
+        short_name: `PrimeX`,
         start_url: `/`,
         background_color: `#f7f0eb`,
         theme_color: `#a2466c`,

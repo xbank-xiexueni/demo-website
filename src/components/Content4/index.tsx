@@ -29,7 +29,7 @@ const Content4 = () => {
             sm: 'flex-start',
           }}
         >
-          <Fade bottom opposite cascade duration={1500} delay={200}>
+          <Fade bottom opposite cascade duration={2000} delay={50}>
             <Heading
               fontSize={{
                 md: '40px',

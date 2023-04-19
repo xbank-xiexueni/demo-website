@@ -1,30 +1,15 @@
 import {
   Box,
-  Divider,
   Flex,
   Text,
-  chakra,
   Image,
-  Button,
   Heading,
   FlexProps,
   ImageProps,
-  BoxProps,
-  TextProps,
-  HeadingProps,
-  FlexboxProps,
 } from '@chakra-ui/react';
-import React, {
-  FunctionComponent,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import '@/style/global.scss';
-import bg from '../../images/primaryBg.png';
-import ResponsiveBox from '../ResponsiveBox';
 import MyContainer from '../container';
 
 import img1 from '../../images/content3/Effortless Registration.png';
@@ -34,9 +19,7 @@ import img4 from '../../images/content3/Secure Funding.png';
 import img5 from '../../images/content3/Commence Trading.png';
 import img6 from '../../images/content3/Swift Settlement & Withdrawal.png';
 
-import useInViewport from 'ahooks/lib/useInViewport';
 import Slider from 'react-slick';
-import useScroll from 'ahooks/lib/useScroll';
 import { CONTENT1_HEIGHT } from '../Content1';
 
 const SUPPORTS = [
@@ -158,20 +141,20 @@ const Content3 = () => {
       PADDING_Y +
       MARGIN_BOTTOM +
       (document.getElementById('about-us')?.clientHeight || 0) +
-      (document.getElementById('how-to-trade-with-us')?.clientHeight || 0);
+      (document.getElementById('how-to-trade-with-us')?.clientHeight || 0) -
+      document.documentElement.clientHeight * 0.5;
     if (!parentTop) return;
 
     const itemHeight = 340;
     addEventListener('scroll', (e) => {
       const scrollTop =
-        (document.documentElement.scrollTop || document.body.scrollTop) +
-        (document.documentElement.clientHeight || 0) -
-        200;
+        document.documentElement.scrollTop || document.body.scrollTop;
 
       if ((scrollTop - parentTop) / itemHeight < 0) {
         setCurrent(undefined);
         return;
       }
+      console.log(Math.ceil((scrollTop - parentTop) / itemHeight));
       setCurrent(Math.ceil((scrollTop - parentTop) / itemHeight));
     });
   }, []);

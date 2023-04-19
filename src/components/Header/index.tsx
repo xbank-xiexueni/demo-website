@@ -1,7 +1,6 @@
 import { Box, Image, Flex, Button } from '@chakra-ui/react';
 import React from 'react';
 import MyContainer from '../container';
-import './index.scss';
 import Icon from '../../images/headerIcon.png';
 import { navigate } from 'gatsby';
 
