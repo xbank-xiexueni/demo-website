@@ -71,6 +71,8 @@ const Content4 = () => {
             bottom={'80px'}
             onClick={() => {
               // 打开邮箱
+              if (typeof window === undefined) return;
+              window.location.href = 'mailto:info@primextrading.com.au';
             }}
           >
             Get in Touch
