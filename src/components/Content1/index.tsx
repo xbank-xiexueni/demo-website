@@ -14,7 +14,7 @@ import scrollJson from '../../constants/Scroll-helper.json';
 export const CONTENT1_HEIGHT = 982;
 const Content1 = () => {
   useLayoutEffect(() => {
-    if (typeof window === undefined) return;
+    if (typeof document === undefined) return;
     const bgx = document.getElementById('bgx');
     if (!bgx) return;
 
@@ -36,7 +36,7 @@ const Content1 = () => {
   }, []);
 
   const minHeight = useMemo(()=> {
-    if (typeof window === undefined) return 982; 
+    if (typeof document === undefined) return 982; 
     const windowWidth = document.documentElement.clientWidth || document?.body?.clientWidth
     if(!windowWidth) return 982
     return windowWidth * 982 / 1440

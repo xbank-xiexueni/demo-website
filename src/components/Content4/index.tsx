@@ -7,14 +7,14 @@ import useHover from 'ahooks/lib/useHover';
 
 const Content4 = () => {
   const height = useMemo(()=> {
-    if (typeof window === undefined) return 748; 
+    if (typeof document === undefined) return 748; 
     const windowWidth = document.documentElement.clientWidth || document.body.clientWidth
     if(!windowWidth) return 748
     return windowWidth * 748 / 1440
   },[])
 
   const mobileHeight = useMemo(()=> {
-    if (typeof window === undefined) return 748; 
+    if (typeof document === undefined) return 748; 
     const windowWidth = document.documentElement.clientWidth || document.body.clientWidth
     if(!windowWidth) return 748
     return windowWidth * 748 / 390

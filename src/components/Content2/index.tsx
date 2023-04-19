@@ -320,10 +320,6 @@ const Content2 = () => {
                 textAlign={'center'}
                 alignItems={'center'}
                 justify={'center'}
-                // onClick={() => {
-                //   if (typeof window === undefined) return;
-                //   window.open(link);
-                // }}
               >
                 Assurance
               </Flex>
