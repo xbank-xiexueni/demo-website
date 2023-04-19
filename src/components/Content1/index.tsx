@@ -14,19 +14,19 @@ export const CONTENT1_HEIGHT = 982;
 const Content1 = () => {
   useLayoutEffect(() => {
     if (typeof window === undefined) return;
-    let bgx = document.getElementById('bgx');
+    const bgx = document.getElementById('bgx');
     if (!bgx) return;
 
     bgx.onmouseenter = (e) => {
-      let enterX = e.clientX;
-      let enterY = e.clientY;
+      const enterX = e.clientX;
+      const enterY = e.clientY;
       if (!bgx) return;
-      let cliX = parseInt(bgx.style.backgroundPosition.split(' ')[0]) || 0;
-      let cliY = parseInt(bgx.style.backgroundPosition.split(' ')[1]) || 0;
+      const cliX = parseInt(bgx.style.backgroundPosition.split(' ')[0]) || 0;
+      const cliY = parseInt(bgx.style.backgroundPosition.split(' ')[1]) || 0;
       bgx.onmousemove = (e) => {
-        let currX = cliX + (e.clientX - enterX) * 0.2;
-        let currY = cliY + (e.clientY - enterY) * 0.2;
-        if (currX >= -100 && currX <= 0 && !!bgx) {
+        const currX = cliX + (e.clientX - enterX) * 0.2;
+        const currY = cliY + (e.clientY - enterY) * 0.2;
+        if (currX >= -200 && currX <= 0 && !!bgx) {
           // @ts-ignore
           bgx.style['background-position'] = `${currX}px ${currY}px`;
         }
@@ -79,7 +79,7 @@ const Content1 = () => {
             m={'0 auto'}
             overflow={'hidden'}
             minH={`${CONTENT1_HEIGHT}px`}
-            backgroundSize={'120%'}
+            backgroundSize={'125%'}
             bgPos={'0 0'}
             id='bgx'
             transition={'all .8s cubic-bezier(0.1, 0.7, 0.7, 1);'}

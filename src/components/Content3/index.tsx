@@ -150,12 +150,13 @@ const Content3 = () => {
       const scrollTop =
         document.documentElement.scrollTop || document.body.scrollTop;
 
-      if ((scrollTop - parentTop) / itemHeight < 0) {
+      const targetIndex = (scrollTop - parentTop) / itemHeight;
+      if (targetIndex < 0 || targetIndex > 6) {
         setCurrent(undefined);
         return;
       }
-      console.log(Math.ceil((scrollTop - parentTop) / itemHeight));
-      setCurrent(Math.ceil((scrollTop - parentTop) / itemHeight));
+
+      setCurrent(Math.ceil(targetIndex));
     });
   }, []);
 
