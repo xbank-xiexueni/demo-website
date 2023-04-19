@@ -57,7 +57,12 @@ const Item: FunctionComponent<
       cursor={'pointer'}
       {...rest}
     >
-      <Flex justify={'space-between'} onClick={() => setFlag((prev) => !prev)}>
+      <Flex
+        justify={'space-between'}
+        onClick={() => setFlag((prev) => !prev)}
+        alignItems={'flex-start'}
+        gap={'32px'}
+      >
         <Text fontSize={'22px'} fontFamily={'Forum'}>
           {title}
         </Text>
