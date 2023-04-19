@@ -37,7 +37,7 @@ const Content1 = () => {
 
   const minHeight = useMemo(()=> {
     if (typeof window === undefined) return 982; 
-    const windowWidth = document.documentElement.clientWidth || document.body.clientWidth
+    const windowWidth = document.documentElement.clientWidth || document?.body?.clientWidth
     if(!windowWidth) return 982
     return windowWidth * 982 / 1440
   },[])

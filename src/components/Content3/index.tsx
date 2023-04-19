@@ -157,6 +157,11 @@ const Content3 = () => {
 
       setCurrent(Math.ceil(targetIndex));
     });
+    return ()=> {
+      removeEventListener('scroll',()=> {
+        setCurrent(undefined)
+      })
+    }
   }, []);
 
   const [slideIndex, setSlideIndex] = useState(0);
