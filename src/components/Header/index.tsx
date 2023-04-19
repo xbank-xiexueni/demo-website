@@ -1,81 +1,14 @@
-import { Box, Image, Flex, useDisclosure, Button } from '@chakra-ui/react';
-import React, { useCallback, useEffect, useState } from 'react';
+import { Box, Image, Flex, Button } from '@chakra-ui/react';
+import React from 'react';
 import MyContainer from '../container';
 import './index.scss';
-import {
-  ABOUT_US_ID,
-  COMMUNITY_ID,
-  CONVERT_MONEY_ID,
-  DISCOVER_WEB3_ID,
-} from '../../constants/ID';
 import Icon from '../../images/headerIcon.png';
 import { navigate } from 'gatsby';
-
-const ARROW = (
-  <svg
-    width='8'
-    height='4'
-    viewBox='0 0 8 4'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-  >
-    <path d='M1 1L4 3L7 1' stroke='#00000F' />
-  </svg>
-);
 
 const MENU_LIST = ['About us', 'Why PrimeX', 'How to trade with us', 'FAQs'];
 
 const Header = () => {
-  const [show, setShow] = useState(false);
-  const [focusId, setFocusId] = useState<
-    | 'ABOUT_US_ID'
-    | 'COMMUNITY_ID'
-    | 'CONVERT_MONEY_ID'
-    | 'DISCOVER_WEB3_ID'
-    | undefined
-  >();
-
-  const [currentOpen, setCurrentOpen] = useState<
-    'product' | 'company' | undefined
-  >(undefined);
-  // const [show2, setShow2] = useState(true);
-
-  useEffect(() => {
-    // 添加滚动事件
-    addEventListener('scroll', handleScroll);
-    return () => {
-      removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   const isBrowser = typeof window !== 'undefined';
-
-  const handleScroll = useCallback(() => {
-    if (!isBrowser) {
-      return;
-    }
-    const scrollTop =
-      document.documentElement.scrollTop ||
-      window?.pageYOffset ||
-      document.body.scrollTop;
-
-    //  高度
-    const dom = document.getElementById('content1');
-    const height: number = dom?.offsetHeight || 500;
-    setShow(scrollTop > height);
-  }, []);
-
-  const scrollTo = useCallback((id: string) => {
-    const dom = document.getElementById(id);
-    const offset = dom?.offsetTop || 0;
-    if (!isBrowser) {
-      return;
-    }
-    window?.scrollTo(0, offset - 100);
-  }, []);
-
-  const { isOpen, onClose, onToggle } = useDisclosure();
-
   return (
     <Box
       position={'absolute'}
@@ -133,6 +66,7 @@ const Header = () => {
               borderWidth={1}
               borderColor={'font.primary'}
               fontSize={'12px'}
+              fontWeight={'500'}
               px='16px'
               py='12px'
               bg='transparent'

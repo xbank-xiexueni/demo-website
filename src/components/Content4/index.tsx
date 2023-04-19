@@ -1,9 +1,8 @@
-import { Box, Button, Flex, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
 import React from 'react';
 import bg from '../../images/content4-bg.png';
 import MyContainer from '../container';
 import Fade from 'react-reveal/Fade';
-
 
 const Content4 = () => {
   return (
@@ -29,8 +28,8 @@ const Content4 = () => {
             sm: 'flex-start',
           }}
         >
-          <Fade bottom>
-            <Text
+          <Fade bottom opposite>
+            <Heading
               fontSize={{
                 md: '40px',
                 sm: '36px',
@@ -44,13 +43,14 @@ const Content4 = () => {
             >
               Partner with PrimeX and experience the pinnacle of bespoke crypto
               trading. Embrace the future of finance with us.
-            </Text>
+            </Heading>
           </Fade>
 
           <Button
             w='118px'
             bg='transparent'
             fontSize={'12px'}
+            fontWeight={'500'}
             borderColor={'font.primary'}
             borderWidth={1}
             mt={{

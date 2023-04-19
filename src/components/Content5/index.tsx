@@ -1,4 +1,4 @@
-import { Box, BoxProps, Collapse, Flex, Text } from '@chakra-ui/react';
+import { Box, BoxProps, Collapse, Flex, Heading, Text } from '@chakra-ui/react';
 import MyContainer from '../container';
 import React, { FunctionComponent, useState } from 'react';
 
@@ -62,7 +62,9 @@ const Item: FunctionComponent<
         onClick={() => setFlag((prev) => !prev)}
         pb='20px'
       >
-        <Text fontSize={'22px'}>{title}</Text>
+        <Text fontSize={'22px'} fontFamily={'Forum'}>
+          {title}
+        </Text>
         <Box transform={`rotate(${flag ? 180 : 0}deg)`} transition={'all .3s'}>
           <svg
             width='32'
@@ -81,7 +83,7 @@ const Item: FunctionComponent<
         </Box>
       </Flex>
       <Collapse in={flag} animateOpacity>
-        <Text >{text}</Text>
+        <Text>{text}</Text>
       </Collapse>
     </Box>
   );
@@ -114,7 +116,7 @@ const Content5 = () => {
             xs: 'wrap',
           }}
         >
-          <Text
+          <Heading
             w={{
               lg: '330px',
               md: '280px',
@@ -125,7 +127,7 @@ const Content5 = () => {
             fontSize={'40px'}
           >
             Frequently Asked Questions
-          </Text>
+          </Heading>
 
           <Box
             w={{

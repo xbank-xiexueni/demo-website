@@ -45,14 +45,14 @@ const Content1 = () => {
           >
             <MyContainer position={'relative'}>
               <Flex position={'absolute'} bottom={'80px'} flexWrap={'wrap'}>
-                <Text
+                <Heading
                   fontSize={'44px'}
                   lineHeight={'1.2'}
                   textShadow={'1px 0px 2px rgba(0, 0, 0, 0.1)'}
-                  letterSpacing={'-0.2px'}
+                  fontWeight={400}
                 >
                   Institutional-grade solutions with PrimeX.
-                </Text>
+                </Heading>
                 lot
               </Flex>
             </MyContainer>
@@ -77,14 +77,15 @@ const Content1 = () => {
                 justifyContent={'space-between'}
                 alignItems={'flex-end'}
               >
-                <Text
+                <Heading
                   fontSize={'66px'}
                   lineHeight={'1.2'}
                   textShadow={'1px 0px 2px rgba(0, 0, 0, 0.1)'}
                   w='80%'
+                  fontWeight={400}
                 >
                   Institutional-grade solutions with PrimeX.
-                </Text>
+                </Heading>
                 lot
               </Flex>
             </MyContainer>

@@ -1,20 +1,8 @@
-import {
-  Box,
-  Divider,
-  Flex,
-  Text,
-  chakra,
-  Image,
-  Button,
-  SlideFade,
-} from '@chakra-ui/react';
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import { Box, Flex, Text, Image, Button, Heading } from '@chakra-ui/react';
+import React, { useRef } from 'react';
 
 import '@/style/global.scss';
-import bg from '../../images/primaryBg.png';
-import ResponsiveBox from '../ResponsiveBox';
 import MyContainer from '../container';
-import Header from '../Header';
 import img1 from '../../images/content2/1.svg';
 import img2 from '../../images/content2/2.svg';
 import img3 from '../../images/content2/3.svg';
@@ -27,6 +15,7 @@ import seqImg from '../../images/content2/seq.svg';
 import useInViewport from 'ahooks/lib/useInViewport';
 // t
 import Fade from 'react-reveal/Fade';
+import { useDebounce } from 'ahooks';
 
 const STEPS = [
   {
@@ -82,8 +71,11 @@ const SUPPORTS = [
 const Content2 = () => {
   const flex1Ref = useRef(null);
   const [inView, radio] = useInViewport(flex1Ref, {
-    rootMargin: '20px',
+    rootMargin: '10px',
     threshold: 0.9,
+  });
+  const debounceInView = useDebounce(inView, {
+    wait: 1000,
   });
   return (
     <Box
@@ -100,7 +92,7 @@ const Content2 = () => {
         }}
       >
         {/* 1 */}
-        <Fade bottom>
+        <Fade bottom opposite cascade>
           <Flex
             py={{
               md: '120px',
@@ -123,6 +115,7 @@ const Content2 = () => {
                 h='9px'
                 display={'flex'}
                 borderRadius={'100%'}
+                fontWeight={'600'}
               />
               <Text fontSize={'12px'}>ABOUT US</Text>
             </Flex>
@@ -133,9 +126,14 @@ const Content2 = () => {
                 md: '700px',
               }}
             >
-              <Text fontSize={'40px'} color={'green.1'} mb='24px'>
+              <Heading
+                fontSize={'40px'}
+                color={'green.1'}
+                mb='24px'
+                fontWeight={400}
+              >
                 Building Trust in the Crypto Frontier
-              </Text>
+              </Heading>
               <Text>
                 Established on a solid foundation with years of experience in
                 traditional finance, PrimeX has a proven track record of
@@ -151,10 +149,8 @@ const Content2 = () => {
               </Text>
             </Box>
           </Flex>
-        </Fade>
 
-        {/* 2 */}
-        <Fade bottom>
+          {/* 2 */}
           <Flex
             className='foo-bottom2'
             justifyContent={'space-between'}
@@ -178,6 +174,7 @@ const Content2 = () => {
                 h='9px'
                 display={'flex'}
                 borderRadius={'100%'}
+                fontWeight={'600'}
               />
               <Text fontSize={'12px'}>WHY US</Text>
             </Flex>
@@ -189,13 +186,14 @@ const Content2 = () => {
                 md: '700px',
               }}
             >
-              <Text
+              <Heading
                 fontSize={{
                   md: '32px',
                   sm: '28px',
                   xs: '28px',
                 }}
                 color={'green.1'}
+                fontWeight={400}
               >
                 Discover the PrimeX difference – a comprehensive crypto OTC
                 trading desk for clients seeking secure and reliable service. We
@@ -203,7 +201,7 @@ const Content2 = () => {
                 in-depth research, and cutting-edge infrastructure. Our experts
                 are available 24/7 to help you navigate the dynamic crypto
                 markets.
-              </Text>
+              </Heading>
               <Flex mt='100px' gap={'24px'} flexWrap={'wrap'}>
                 {STEPS.map(({ svg, title, text }) => (
                   <Box
@@ -228,7 +226,8 @@ const Content2 = () => {
                       h={{ md: '44px', sm: '32px', xs: '32px' }}
                       mb='32px'
                     />
-                    <Text
+                    <Heading
+                      fontWeight={400}
                       fontSize={{
                         md: '40px',
                         sm: '28px',
@@ -237,7 +236,7 @@ const Content2 = () => {
                       mb='16px'
                     >
                       {title}
-                    </Text>
+                    </Heading>
                     <Text>{text}</Text>
                   </Box>
                 ))}
@@ -282,6 +281,7 @@ const Content2 = () => {
                 sm: '100%',
                 xs: '100%',
               }}
+              maxW='300px'
             >
               <Button
                 bg={'white'}
@@ -289,13 +289,23 @@ const Content2 = () => {
                 borderRadius={'33px'}
                 borderColor={'font.tip'}
                 color='font.tip'
+                w={'81px'}
+                h='28px'
+                fontSize={'12px'}
+                fontWeight={400}
+                mb='8px'
               >
                 Assurance
               </Button>
               <Image src={svg} h='44px' my='28px' />
-              <Text mb='12px' fontSize={'26px'} color='black.1'>
+              <Heading
+                mb='12px'
+                fontSize={'26px'}
+                color='black.1'
+                fontWeight={400}
+              >
                 {title}
-              </Text>
+              </Heading>
               <Text color={'font.tip'} fontSize={'14px'}>
                 {text}
               </Text>

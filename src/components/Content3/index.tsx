@@ -8,8 +8,13 @@ import {
   Button,
   Heading,
   FlexProps,
+  ImageProps,
+  BoxProps,
+  TextProps,
+  HeadingProps,
+  FlexboxProps,
 } from '@chakra-ui/react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
 
 import '@/style/global.scss';
 import bg from '../../images/primaryBg.png';
@@ -76,7 +81,7 @@ const settings = {
   // slidesToShow: 5,
   swipeToSlide: true,
   arrows: false,
-  dots:true
+  dots: true,
 };
 
 const INITIAL_BOX_PROPS: FlexProps = {
@@ -89,9 +94,34 @@ const INITIAL_BOX_PROPS: FlexProps = {
     xs: '#252A2F',
   },
   borderRadius: 12,
-  p: '36px',
+  p: {
+    md: 0,
+    sm: '36px',
+    xs: '36px',
+  },
   minW: '310px',
+  mb: { md: '120px', sm: 0, xs: 0 },
+  position: 'relative',
+  transition: 'all 0.5s',
 };
+
+const INITIAL_IMAGE_PROPS: ImageProps = {
+  boxSize: {
+    md: '340px',
+    sm: '240px',
+    xs: '240px',
+  },
+  order: {
+    md: 2,
+    sm: 1,
+    xs: 1,
+  },
+  position: 'absolute',
+  right: 0,
+  top: '-120px',
+  transition: 'all 0.5s',
+};
+
 const Content3 = () => {
   const ref0 = useRef(null);
   const ref1 = useRef(null);
@@ -106,6 +136,10 @@ const Content3 = () => {
   const [inViewport4, radio4] = useInViewport(ref4, OPTIONS);
   const [inViewport5, radio5] = useInViewport(ref5, OPTIONS);
 
+  useEffect(()=> {
+
+  },[inViewport0,inViewport1,inViewport2,inv])
+
   return (
     <Box position={'relative'} py='240px'>
       <MyContainer>
@@ -113,6 +147,7 @@ const Content3 = () => {
           id='how-to-trade-with-us'
           textAlign={'center'}
           px={{
+            lg: '200px',
             md: '100px',
             sm: '20px',
             xs: '20px',
@@ -128,6 +163,7 @@ const Content3 = () => {
             xs: '46px',
             sm: '46px',
           }}
+          fontWeight={400}
         >
           Streamlined Trading with Unparalleled Support
         </Heading>
@@ -160,9 +196,9 @@ const Content3 = () => {
             {SUPPORTS.map((item) => (
               <Box {...INITIAL_BOX_PROPS} key={item.id} h='502px' maxW='310px'>
                 <Box pl={0} order={2}>
-                  <Text fontSize={'28px'} mb='20px'>
+                  <Heading fontSize={'28px'} mb='20px' fontWeight={400}>
                     {item.title}
-                  </Text>
+                  </Heading>
                   <Text>{item.text}</Text>
                 </Box>
                 <Image src={item.svg} boxSize={'240px'} order={1} />
@@ -173,13 +209,14 @@ const Content3 = () => {
 
         {/* pc */}
         <Flex
+          id='content3-position'
           flexDir={{ md: 'column', sm: 'row', xs: 'row' }}
           overflowX={{
             md: 'unset',
             sm: 'scroll',
             xs: 'scroll',
           }}
-          gap={'24px'}
+          gap={'120px'}
           display={{
             md: 'flex',
             sm: 'none',
@@ -207,33 +244,25 @@ const Content3 = () => {
                 inViewport0 ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
               }
               borderLeftWidth={2}
+              opacity={inViewport0 ? 1 : 0.3}
             >
-              <Text
+              <Heading
                 fontSize={{
                   md: '40px',
                   sm: '28px',
                   xs: '28px',
                 }}
                 mb='20px'
+                fontWeight={400}
               >
                 {SUPPORTS[0].title}
-              </Text>
-              <Text>{SUPPORTS[0].text}</Text>
+              </Heading>
+              <Text fontWeight={300}>{SUPPORTS[0].text}</Text>
             </Box>
             <Image
               src={SUPPORTS[0].svg}
-              boxSize={{
-                md: '340px',
-                sm: '240px',
-                xs: '240px',
-              }}
-              transition={'all 0.5s'}
               opacity={inViewport0 ? 1 : 0}
-              order={{
-                md: 2,
-                sm: 1,
-                xs: 1,
-              }}
+              {...INITIAL_IMAGE_PROPS}
             />
           </Flex>
 
@@ -258,33 +287,25 @@ const Content3 = () => {
                 inViewport1 ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
               }
               borderLeftWidth={2}
+              opacity={inViewport1 ? 1 : 0.3}
             >
-              <Text
+              <Heading
                 fontSize={{
                   md: '40px',
                   sm: '28px',
                   xs: '28px',
                 }}
+                fontWeight={400}
                 mb='20px'
               >
                 {SUPPORTS[1].title}
-              </Text>
-              <Text>{SUPPORTS[1].text}</Text>
+              </Heading>
+              <Text fontWeight={300}>{SUPPORTS[1].text}</Text>
             </Box>
             <Image
               src={SUPPORTS[1].svg}
-              boxSize={{
-                md: '340px',
-                sm: '240px',
-                xs: '240px',
-              }}
-              transition={'all 0.5s'}
               opacity={inViewport1 ? 1 : 0}
-              order={{
-                md: 2,
-                sm: 1,
-                xs: 1,
-              }}
+              {...INITIAL_IMAGE_PROPS}
             />
           </Flex>
           <Flex ref={ref2} {...INITIAL_BOX_PROPS}>
@@ -308,33 +329,25 @@ const Content3 = () => {
                 inViewport2 ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
               }
               borderLeftWidth={2}
+              opacity={inViewport2 ? 1 : 0.3}
             >
-              <Text
+              <Heading
                 fontSize={{
                   md: '40px',
                   sm: '28px',
                   xs: '28px',
                 }}
+                fontWeight={400}
                 mb='20px'
               >
                 {SUPPORTS[2].title}
-              </Text>
-              <Text>{SUPPORTS[2].text}</Text>
+              </Heading>
+              <Text fontWeight={300}>{SUPPORTS[2].text}</Text>
             </Box>
             <Image
               src={SUPPORTS[2].svg}
-              boxSize={{
-                md: '340px',
-                sm: '240px',
-                xs: '240px',
-              }}
-              transition={'all 0.5s'}
               opacity={inViewport2 ? 1 : 0}
-              order={{
-                md: 2,
-                sm: 1,
-                xs: 1,
-              }}
+              {...INITIAL_IMAGE_PROPS}
             />
           </Flex>
           <Flex ref={ref3} {...INITIAL_BOX_PROPS}>
@@ -358,33 +371,25 @@ const Content3 = () => {
                 inViewport3 ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
               }
               borderLeftWidth={2}
+              opacity={inViewport3 ? 1 : 0.3}
             >
-              <Text
+              <Heading
                 fontSize={{
                   md: '40px',
                   sm: '28px',
                   xs: '28px',
                 }}
                 mb='20px'
+                fontWeight='400'
               >
                 {SUPPORTS[3].title}
-              </Text>
-              <Text>{SUPPORTS[3].text}</Text>
+              </Heading>
+              <Text fontWeight={300}>{SUPPORTS[3].text}</Text>
             </Box>
             <Image
               src={SUPPORTS[3].svg}
-              boxSize={{
-                md: '340px',
-                sm: '240px',
-                xs: '240px',
-              }}
-              transition={'all 0.5s'}
               opacity={inViewport3 ? 1 : 0}
-              order={{
-                md: 2,
-                sm: 1,
-                xs: 1,
-              }}
+              {...INITIAL_IMAGE_PROPS}
             />
           </Flex>
           <Flex ref={ref4} {...INITIAL_BOX_PROPS}>
@@ -408,36 +413,28 @@ const Content3 = () => {
                 inViewport4 ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
               }
               borderLeftWidth={2}
+              opacity={inViewport4 ? 1 : 0.3}
             >
-              <Text
+              <Heading
                 fontSize={{
                   md: '40px',
                   sm: '28px',
                   xs: '28px',
                 }}
+                fontWeight='400'
                 mb='20px'
               >
                 {SUPPORTS[4].title}
-              </Text>
-              <Text>{SUPPORTS[4].text}</Text>
+              </Heading>
+              <Text fontWeight={300}>{SUPPORTS[4].text}</Text>
             </Box>
             <Image
               src={SUPPORTS[4].svg}
-              boxSize={{
-                md: '340px',
-                sm: '240px',
-                xs: '240px',
-              }}
-              transition={'all 0.5s'}
               opacity={inViewport4 ? 1 : 0}
-              order={{
-                md: 2,
-                sm: 1,
-                xs: 1,
-              }}
+              {...INITIAL_IMAGE_PROPS}
             />
           </Flex>
-          <Flex ref={ref5} {...INITIAL_BOX_PROPS} opacity={radio5}>
+          <Flex ref={ref5} {...INITIAL_BOX_PROPS}>
             <Box
               pl={{
                 md: '72px',
@@ -458,33 +455,25 @@ const Content3 = () => {
                 inViewport5 ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
               }
               borderLeftWidth={2}
+              opacity={inViewport5 ? 1 : 0.3}
             >
-              <Text
+              <Heading
                 fontSize={{
                   md: '40px',
                   sm: '28px',
                   xs: '28px',
                 }}
+                fontWeight='400'
                 mb='20px'
               >
                 {SUPPORTS[5].title}
-              </Text>
-              <Text>{SUPPORTS[5].text}</Text>
+              </Heading>
+              <Text fontWeight={300}>{SUPPORTS[5].text}</Text>
             </Box>
             <Image
               src={SUPPORTS[5].svg}
-              boxSize={{
-                md: '340px',
-                sm: '240px',
-                xs: '240px',
-              }}
-              transition={'all 0.5s'}
               opacity={inViewport5 ? 1 : 0}
-              order={{
-                md: 2,
-                sm: 1,
-                xs: 1,
-              }}
+              {...INITIAL_IMAGE_PROPS}
             />
           </Flex>
         </Flex>

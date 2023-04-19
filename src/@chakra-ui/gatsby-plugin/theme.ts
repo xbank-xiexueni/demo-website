@@ -62,6 +62,10 @@ const theme = extendTheme({
     },
   },
   breakpoints,
+  fonts: {
+    body: 'Roboto',
+    heading: 'EB Garamond',
+  },
   styles: {
     global: {
       html: {

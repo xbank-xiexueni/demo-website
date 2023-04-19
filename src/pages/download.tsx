@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
-import { IOS_URL, ANDROID_URL } from '../constants/URL';
-import { handleNavigate } from '../utils/navigate';
+// import { IOS_URL, ANDROID_URL } from '../constants/URL';
 
 const download = () => {
   useEffect(() => {
@@ -25,18 +24,18 @@ const download = () => {
       language: navigator.language.toLowerCase(),
     };
 
-    if (
-      browser.versions.ios ||
-      browser.versions.iPhone ||
-      browser.versions.iPad
-    ) {
-      handleNavigate(IOS_URL);
-    } else if (browser.versions.android) {
-      handleNavigate(ANDROID_URL);
-    } else {
-      console.error('error userAgent');
-      // navigate('/');
-    }
+    // if (
+    //   browser.versions.ios ||
+    //   browser.versions.iPhone ||
+    //   browser.versions.iPad
+    // ) {
+    //   handleNavigate(IOS_URL);
+    // } else if (browser.versions.android) {
+    //   handleNavigate(ANDROID_URL);
+    // } else {
+    //   console.error('error userAgent');
+    //   // navigate('/');
+    // }
   }, []);
 
   return <>loading</>;
