@@ -166,11 +166,12 @@ const Content3 = () => {
   return (
     <Box
       position={'relative'}
-      py={{
+      pt={{
         md: `${PADDING_Y}px`,
         sm: '120px',
         xs: '120px',
       }}
+      pb='120px'
     >
       <MyContainer>
         <Heading

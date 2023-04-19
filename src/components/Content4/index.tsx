@@ -21,7 +21,6 @@ const Content4 = () => {
             sm: '12px',
             xs: '12px',
           }}
-          pb='88px'
           flexDirection={'column'}
           justify={{
             md: 'space-between',
@@ -29,7 +28,7 @@ const Content4 = () => {
             sm: 'flex-start',
           }}
         >
-          <Fade bottom opposite cascade duration={2000} delay={50}>
+          <Fade bottom opposite cascade duration={1500} distance='3000px'>
             <Heading
               fontSize={{
                 md: '40px',
