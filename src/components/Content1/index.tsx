@@ -1,5 +1,5 @@
 import { Box, Flex, Heading } from '@chakra-ui/react';
-import React, { useLayoutEffect, useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 
 import '@/style/global.scss';
 import bg from '../../images/primaryBg.png';
