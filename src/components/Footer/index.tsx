@@ -6,7 +6,7 @@ import rightImg from '../../images/footer/right.png';
 
 const Footer = () => {
   return (
-    <Box bg='white' py='80px'>
+    <Box bg='white' py='88px'>
       <MyContainer>
         <Flex
           alignItems={'center'}

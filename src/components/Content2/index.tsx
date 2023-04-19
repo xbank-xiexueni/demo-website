@@ -15,7 +15,8 @@ import seqImg from '../../images/content2/seq.svg';
 import useInViewport from 'ahooks/lib/useInViewport';
 // t
 import Fade from 'react-reveal/Fade';
-import { useDebounce } from 'ahooks';
+import { useDebounce, useScroll } from 'ahooks';
+import { CONTENT1_HEIGHT } from '../Content1';
 
 const STEPS = [
   {
@@ -69,14 +70,23 @@ const SUPPORTS = [
 ];
 
 const Content2 = () => {
-  const flex1Ref = useRef(null);
-  const [inView, radio] = useInViewport(flex1Ref, {
-    rootMargin: '10px',
-    threshold: 0.9,
-  });
-  const debounceInView = useDebounce(inView, {
-    wait: 1000,
-  });
+  const scroll = useScroll(
+    document,
+    (val) => val.top > CONTENT1_HEIGHT && val.top < CONTENT1_HEIGHT + 200
+  );
+  const [inViewport, ratio] = useInViewport(
+    () => document.getElementById('children'),
+    {
+      threshold: 0.8,
+      // root: () => document.getElementById('about-us'),
+    }
+  );
+  console.log(
+    '🚀 ~ file: index.tsx:84 ~ Content2 ~ inViewport:',
+    inViewport,
+    ratio
+  );
+
   return (
     <Box
       bg='linear-gradient(180deg, #000228 7.52%, #2838E4 100%)'
@@ -92,14 +102,19 @@ const Content2 = () => {
         }}
       >
         {/* 1 */}
-        <Fade bottom opposite cascade>
+        <Fade bottom opposite cascade duration={1500} delay={200}>
           <Flex
             py={{
               md: '120px',
               sm: '40px',
               xs: '40px',
             }}
-            ref={flex1Ref}
+            id='children'
+            mb={{
+              md: 0,
+              sm: '40px',
+              xs: '40px',
+            }}
             justifyContent={'space-between'}
             flexWrap={{
               md: 'nowrap',
@@ -108,7 +123,16 @@ const Content2 = () => {
             }}
             alignItems={'flex-start'}
           >
-            <Flex justifyContent={'flex-start'} alignItems={'center'} gap='8px'>
+            <Flex
+              justifyContent={'flex-start'}
+              alignItems={'center'}
+              gap='8px'
+              mb={{
+                md: 0,
+                sm: '32px',
+                xs: '32px',
+              }}
+            >
               <Box
                 bgColor={'green.1'}
                 w='9px'
@@ -131,6 +155,7 @@ const Content2 = () => {
                 color={'green.1'}
                 mb='24px'
                 fontWeight={400}
+                lineHeight={1}
               >
                 Building Trust in the Crypto Frontier
               </Heading>
@@ -167,7 +192,16 @@ const Content2 = () => {
             }}
             id='why-primex'
           >
-            <Flex justifyContent={'flex-start'} alignItems={'center'} gap='8px'>
+            <Flex
+              justifyContent={'flex-start'}
+              alignItems={'center'}
+              gap='8px'
+              mb={{
+                md: 0,
+                sm: '32px',
+                xs: '32px',
+              }}
+            >
               <Box
                 bgColor={'green.1'}
                 w='9px'
@@ -202,7 +236,15 @@ const Content2 = () => {
                 are available 24/7 to help you navigate the dynamic crypto
                 markets.
               </Heading>
-              <Flex mt='100px' gap={'24px'} flexWrap={'wrap'}>
+              <Flex
+                mt='100px'
+                gap={{
+                  md: '24px',
+                  sm: 0,
+                  xs: 0,
+                }}
+                flexWrap={'wrap'}
+              >
                 {STEPS.map(({ svg, title, text }) => (
                   <Box
                     key={title}
@@ -272,6 +314,7 @@ const Content2 = () => {
             xs: 'wrap',
           }}
           justify={'space-between'}
+          rowGap={'40px'}
         >
           {SUPPORTS.map(({ svg, title, text }) => (
             <Box

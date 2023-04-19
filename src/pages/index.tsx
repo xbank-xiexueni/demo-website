@@ -19,7 +19,7 @@ const IndexPage = () => {
   // const { t, changeLanguage } = useI18next();
   // const { innerHeight } = window;
   return (
-    <Box pb={{ xs: 70, sm: 70, md: 0 }}>
+    <Box>
       {/* <Header /> */}
 
       <Content1 />
@@ -27,7 +27,6 @@ const IndexPage = () => {
       <Content2 />
 
       <Content3 />
-
 
       <Content4 />
 

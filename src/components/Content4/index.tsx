@@ -12,6 +12,7 @@ const Content4 = () => {
       w='100vw'
       h='748px'
       bgPos={'0 0'}
+      position={'relative'}
     >
       <MyContainer>
         <Flex
@@ -28,7 +29,7 @@ const Content4 = () => {
             sm: 'flex-start',
           }}
         >
-          <Fade bottom opposite>
+          <Fade bottom opposite cascade duration={1500} delay={200}>
             <Heading
               fontSize={{
                 md: '40px',
@@ -37,8 +38,8 @@ const Content4 = () => {
               }}
               w={{
                 md: '680px',
-                sm: '100%',
-                xs: '100%',
+                sm: '90%',
+                xs: '90%',
               }}
             >
               Partner with PrimeX and experience the pinnacle of bespoke crypto
@@ -63,6 +64,12 @@ const Content4 = () => {
               bgColor: 'green.1',
               borderColor: 'green.1',
             }}
+            position={{
+              md: 'absolute',
+              sm: 'static',
+              xs: 'static',
+            }}
+            bottom={'80px'}
           >
             Get in Touch
             <svg

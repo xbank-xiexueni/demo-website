@@ -7,6 +7,7 @@ import ResponsiveBox from '../ResponsiveBox';
 import MyContainer from '../container';
 import Header from '../Header';
 
+export const CONTENT1_HEIGHT = 982;
 const Content1 = () => {
   useLayoutEffect(() => {
     let bgx = document.getElementById('bgx');
@@ -38,13 +39,13 @@ const Content1 = () => {
             backgroundImage={bg}
             w='100vw'
             m={'0 auto'}
-            minH={'800px'}
+            minH={'844px'}
             backgroundSize={'cover'}
             bgPos={'center'}
             bgRepeat={'no-repeat'}
           >
             <MyContainer position={'relative'}>
-              <Flex position={'absolute'} bottom={'80px'} flexWrap={'wrap'}>
+              <Flex position={'absolute'} bottom={'124px'}>
                 <Heading
                   fontSize={'44px'}
                   lineHeight={'1.2'}
@@ -53,7 +54,9 @@ const Content1 = () => {
                 >
                   Institutional-grade solutions with PrimeX.
                 </Heading>
-                lot
+              </Flex>
+              <Flex position={'absolute'} bottom={'24px'}>
+                lottie
               </Flex>
             </MyContainer>
           </Flex>
@@ -64,7 +67,7 @@ const Content1 = () => {
             w='100vw'
             m={'0 auto'}
             overflow={'hidden'}
-            minH={'982px'}
+            minH={`${CONTENT1_HEIGHT}px`}
             backgroundSize={'120%'}
             bgPos={'0 0'}
             id='bgx'

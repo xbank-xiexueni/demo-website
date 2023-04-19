@@ -57,11 +57,7 @@ const Item: FunctionComponent<
       cursor={'pointer'}
       {...rest}
     >
-      <Flex
-        justify={'space-between'}
-        onClick={() => setFlag((prev) => !prev)}
-        pb='20px'
-      >
+      <Flex justify={'space-between'} onClick={() => setFlag((prev) => !prev)}>
         <Text fontSize={'22px'} fontFamily={'Forum'}>
           {title}
         </Text>
@@ -83,7 +79,7 @@ const Item: FunctionComponent<
         </Box>
       </Flex>
       <Collapse in={flag} animateOpacity>
-        <Text>{text}</Text>
+        <Text mt='20px'>{text}</Text>
       </Collapse>
     </Box>
   );
@@ -107,8 +103,8 @@ const Content5 = () => {
           }}
           gap={{
             md: '80px',
-            sm: '68px',
-            xs: '68px',
+            sm: '60px',
+            xs: '60px',
           }}
           flexWrap={{
             md: 'nowrap',
@@ -125,6 +121,8 @@ const Content5 = () => {
             }}
             color='green.1'
             fontSize={'40px'}
+            lineHeight={'44px'}
+            fontWeight={400}
           >
             Frequently Asked Questions
           </Heading>

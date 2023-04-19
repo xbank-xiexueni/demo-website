@@ -14,7 +14,13 @@ import {
   HeadingProps,
   FlexboxProps,
 } from '@chakra-ui/react';
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react';
+import React, {
+  FunctionComponent,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from 'react';
 
 import '@/style/global.scss';
 import bg from '../../images/primaryBg.png';
@@ -30,6 +36,8 @@ import img6 from '../../images/content3/Swift Settlement & Withdrawal.png';
 
 import useInViewport from 'ahooks/lib/useInViewport';
 import Slider from 'react-slick';
+import useScroll from 'ahooks/lib/useScroll';
+import { CONTENT1_HEIGHT } from '../Content1';
 
 const SUPPORTS = [
   {
@@ -70,18 +78,19 @@ const SUPPORTS = [
   },
 ];
 
-const OPTIONS = {
-  rootMargin: '0px',
-  threshold: 1,
-};
+// const OPTIONS = {
+//   rootMargin: '0px',
+//   threshold: 1,
+// };
 
 const settings = {
   infinite: true,
-  centerPadding: '12px',
+  centerPadding: '100px',
   // slidesToShow: 5,
   swipeToSlide: true,
   arrows: false,
-  dots: true,
+  dots: false,
+  variableWidth: true,
 };
 
 const INITIAL_BOX_PROPS: FlexProps = {
@@ -96,8 +105,8 @@ const INITIAL_BOX_PROPS: FlexProps = {
   borderRadius: 12,
   p: {
     md: 0,
-    sm: '36px',
-    xs: '36px',
+    sm: '28px',
+    xs: '28px',
   },
   minW: '310px',
   mb: { md: '120px', sm: 0, xs: 0 },
@@ -122,22 +131,61 @@ const INITIAL_IMAGE_PROPS: ImageProps = {
   transition: 'all 0.5s',
 };
 
+const MARGIN_BOTTOM = 164;
+const PADDING_Y = 240;
+
 const Content3 = () => {
-  const ref0 = useRef(null);
-  const ref1 = useRef(null);
-  const ref2 = useRef(null);
-  const ref3 = useRef(null);
-  const ref4 = useRef(null);
-  const ref5 = useRef(null);
-  const [inViewport0, radio0] = useInViewport(ref0, OPTIONS);
-  const [inViewport1, radio1] = useInViewport(ref1, OPTIONS);
-  const [inViewport2, radio2] = useInViewport(ref2, OPTIONS);
-  const [inViewport3, radio3] = useInViewport(ref3, OPTIONS);
-  const [inViewport4, radio4] = useInViewport(ref4, OPTIONS);
-  const [inViewport5, radio5] = useInViewport(ref5, OPTIONS);
+  // const ref0 = useRef(null);
+  // const ref1 = useRef(null);
+  // const ref2 = useRef(null);
+  // const ref3 = useRef(null);
+  // const ref4 = useRef(null);
+  // const ref5 = useRef(null);
+  // const [inViewport0, radio0] = useInViewport(ref0, OPTIONS);
+  // const [inViewport1, radio1] = useInViewport(ref1, OPTIONS);
+  // const [inViewport2, radio2] = useInViewport(ref2, OPTIONS);
+  // const [inViewport3, radio3] = useInViewport(ref3, OPTIONS);
+  // const [inViewport4, radio4] = useInViewport(ref4, OPTIONS);
+  // const [inViewport5, radio5] = useInViewport(ref5, OPTIONS);
+
+  const [current, setCurrent] = useState<number>();
+
+  useEffect(() => {
+    const parentTop =
+      CONTENT1_HEIGHT +
+      PADDING_Y +
+      MARGIN_BOTTOM +
+      (document.getElementById('about-us')?.clientHeight || 0) +
+      (document.getElementById('how-to-trade-with-us')?.clientHeight || 0);
+    if (!parentTop) return;
+
+    const itemHeight = 340;
+    addEventListener('scroll', (e) => {
+      const scrollTop =
+        (document.documentElement.scrollTop || document.body.scrollTop) +
+        (document.documentElement.clientHeight || 0) -
+        200;
+
+      if ((scrollTop - parentTop) / itemHeight < 0) {
+        setCurrent(undefined);
+        return;
+      }
+      setCurrent(Math.ceil((scrollTop - parentTop) / itemHeight));
+    });
+  }, []);
+
+  const [slideIndex, setSlideIndex] = useState(0);
+  const sliderRef = useRef(null);
 
   return (
-    <Box position={'relative'} py='240px'>
+    <Box
+      position={'relative'}
+      py={{
+        md: `${PADDING_Y}px`,
+        sm: '120px',
+        xs: '120px',
+      }}
+    >
       <MyContainer>
         <Heading
           id='how-to-trade-with-us'
@@ -150,9 +198,9 @@ const Content3 = () => {
           }}
           color='green.1'
           mb={{
-            md: '164px',
-            sm: '128px',
-            xs: '128px',
+            md: `${MARGIN_BOTTOM}px`,
+            sm: '100px',
+            xs: '100px',
           }}
           fontSize={{
             md: '60px',
@@ -160,6 +208,7 @@ const Content3 = () => {
             sm: '46px',
           }}
           fontWeight={400}
+          lineHeight={1}
         >
           Streamlined Trading with Unparalleled Support
         </Heading>
@@ -168,6 +217,11 @@ const Content3 = () => {
           alignItems={'center'}
           gap='8px'
           mb='60px'
+          display={{
+            md: 'flex',
+            sm: 'none',
+            xs: 'none',
+          }}
         >
           <Box
             bgColor={'green.1'}
@@ -188,30 +242,54 @@ const Content3 = () => {
           }}
           w='100%'
         >
-          <Slider {...settings}>
+          <Slider
+            {...settings}
+            ref={sliderRef}
+            beforeChange={(current, next) => setSlideIndex(next)}
+          >
             {SUPPORTS.map((item) => (
-              <Box {...INITIAL_BOX_PROPS} key={item.id} h='502px' maxW='310px'>
-                <Box pl={0} order={2}>
+              <Box
+                {...INITIAL_BOX_PROPS}
+                key={item.id}
+                h='502px'
+                maxW='310px'
+                mr='24px'
+              >
+                <Image src={item.svg} boxSize={'240px'} mb='16px' />
+                <Box>
                   <Heading fontSize={'28px'} mb='20px' fontWeight={400}>
                     {item.title}
                   </Heading>
                   <Text>{item.text}</Text>
                 </Box>
-                <Image src={item.svg} boxSize={'240px'} order={1} />
               </Box>
             ))}
           </Slider>
+
+          {/* dots */}
+          <Flex my='30px'>
+            {[0, 1, 2, 3, 4, 5].map((item) => (
+              <Flex
+                cursor={'pointer'}
+                onClick={() => {
+                  if (!sliderRef.current) return;
+                  // @ts-ignore
+                  sliderRef.current?.slickGoTo(item);
+                }}
+                w='16.6%'
+                key={item}
+                h='2px'
+                bgColor={
+                  slideIndex === item ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
+                }
+              />
+            ))}
+          </Flex>
         </Flex>
 
         {/* pc */}
         <Flex
-          id='content3-position'
-          flexDir={{ md: 'column', sm: 'row', xs: 'row' }}
-          overflowX={{
-            md: 'unset',
-            sm: 'scroll',
-            xs: 'scroll',
-          }}
+          flexDir={'column'}
           gap={'120px'}
           display={{
             md: 'flex',
@@ -219,7 +297,53 @@ const Content3 = () => {
             xs: 'none',
           }}
         >
-          <Flex ref={ref0} {...INITIAL_BOX_PROPS}>
+          {SUPPORTS.map(({ id, title, text, svg }) => (
+            <Flex {...INITIAL_BOX_PROPS} key={id}>
+              <Box
+                pl={{
+                  md: '72px',
+                  sm: '0',
+                  xs: '0',
+                }}
+                w={{
+                  md: '50%',
+                  sm: '100%',
+                  xs: '100%',
+                }}
+                order={{
+                  md: 1,
+                  sm: 2,
+                  xs: 3,
+                }}
+                borderLeftColor={
+                  current === id ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
+                }
+                borderLeftWidth={2}
+                opacity={current === id ? 1 : 0.3}
+              >
+                <Heading
+                  fontSize={{
+                    md: '40px',
+                    sm: '28px',
+                    xs: '28px',
+                  }}
+                  mb='20px'
+                  fontWeight={400}
+                >
+                  {title}
+                </Heading>
+                <Text fontWeight={300} opacity={0.8}>
+                  {text}
+                </Text>
+              </Box>
+              <Image
+                src={svg}
+                opacity={current === id ? 1 : 0}
+                {...INITIAL_IMAGE_PROPS}
+              />
+            </Flex>
+          ))}
+          {/* <Flex ref={ref0} {...INITIAL_BOX_PROPS}>
             <Box
               pl={{
                 md: '72px',
@@ -471,7 +595,7 @@ const Content3 = () => {
               opacity={inViewport5 ? 1 : 0}
               {...INITIAL_IMAGE_PROPS}
             />
-          </Flex>
+          </Flex> */}
         </Flex>
       </MyContainer>
     </Box>

@@ -8,7 +8,7 @@ const MyContainer: React.FunctionComponent<
   return (
     <Container
       maxW={{
-        xs: 345,
+        xs: 350,
         sm: 648,
         md: 900,
         lg: 1200,
