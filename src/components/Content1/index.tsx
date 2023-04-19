@@ -15,8 +15,8 @@ export const CONTENT1_HEIGHT = 982;
 const Content1 = () => {
 
   useLayoutEffect(() => {
-    console.log(typeof document,'typeof document ',typeof window)
-    if (typeof document === 'undefined') return;
+    console.log('typeof document:',typeof document,typeof window === 'undefined','typeof window:',typeof window)
+    if (typeof window === 'undefined') return;
     const bgx = document.getElementById('bgx');
     if (!bgx) return;
 
@@ -38,7 +38,7 @@ const Content1 = () => {
   }, []);
 
   const minHeight = useMemo(()=> {
-    if (typeof document === 'undefined') return 982; 
+    if (typeof window === 'undefined') return 982; 
     const windowWidth = document.documentElement.clientWidth || document?.body?.clientWidth
     if(!windowWidth) return 982
     return windowWidth * 982 / 1440

@@ -133,8 +133,7 @@ const Content3 = () => {
   const [current, setCurrent] = useState<number>();
 
   useEffect(() => {
-    if (typeof document === 'undefined') return;
-
+    if (typeof window === 'undefined') return;
     const parentTop =
     (document.getElementById('bgx')?.clientHeight || 0) +
       PADDING_Y +
