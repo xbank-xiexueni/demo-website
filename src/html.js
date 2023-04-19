@@ -20,7 +20,7 @@ export default function HTML(props) {
           crossOrigin='anonymous'
         ></link>
         <link
-          href='https://fonts.googleapis.com/css2?family=EB+Garamond&family=Forum&family=Roboto&display=swap'
+          href='https://fonts.googleapis.com/css2?family=EB+Garamond&family=Forum&family=Roboto:wght@300;400&display=swap'
           rel='stylesheet'
         ></link>
         {props.headComponents}

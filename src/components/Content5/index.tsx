@@ -63,7 +63,7 @@ const Item: FunctionComponent<
         alignItems={'flex-start'}
         gap={'32px'}
       >
-        <Text fontSize={'22px'} fontFamily={'Forum'}>
+        <Text fontSize={'22px'} fontFamily={'Forum'} fontWeight={'400'}>
           {title}
         </Text>
         <Box transform={`rotate(${flag ? 180 : 0}deg)`} transition={'all .3s'}>
