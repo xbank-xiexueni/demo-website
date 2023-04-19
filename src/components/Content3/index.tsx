@@ -136,10 +136,6 @@ const Content3 = () => {
   const [inViewport4, radio4] = useInViewport(ref4, OPTIONS);
   const [inViewport5, radio5] = useInViewport(ref5, OPTIONS);
 
-  useEffect(()=> {
-
-  },[inViewport0,inViewport1,inViewport2,inv])
-
   return (
     <Box position={'relative'} py='240px'>
       <MyContainer>
