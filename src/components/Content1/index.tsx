@@ -1,11 +1,14 @@
-import { Box, Divider, Flex, Heading, Image, Text } from '@chakra-ui/react';
-import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { Box, Flex, Heading } from '@chakra-ui/react';
+import React, { useLayoutEffect } from 'react';
 
 import '@/style/global.scss';
 import bg from '../../images/primaryBg.png';
 import ResponsiveBox from '../ResponsiveBox';
 import MyContainer from '../container';
 import Header from '../Header';
+import Lottie from 'lottie-react';
+// @ts-ignore
+import scrollJson from '../../constants/Scroll-helper.json';
 
 export const CONTENT1_HEIGHT = 982;
 const Content1 = () => {
@@ -57,7 +60,14 @@ const Content1 = () => {
                 </Heading>
               </Flex>
               <Flex position={'absolute'} bottom={'24px'}>
-                lottie
+                <Lottie
+                  animationData={scrollJson}
+                  loop={true}
+                  style={{
+                    width: '15px',
+                    height: '40px',
+                  }}
+                />
               </Flex>
             </MyContainer>
           </Flex>
@@ -90,7 +100,14 @@ const Content1 = () => {
                 >
                   Institutional-grade solutions with PrimeX.
                 </Heading>
-                lot
+                <Lottie
+                  animationData={scrollJson}
+                  loop={true}
+                  style={{
+                    width: '15px',
+                    height: '40px',
+                  }}
+                />
               </Flex>
             </MyContainer>
           </Flex>

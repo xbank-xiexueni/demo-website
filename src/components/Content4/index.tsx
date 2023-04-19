@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading } from '@chakra-ui/react';
 import React from 'react';
 import bg from '../../images/content4-bg.png';
 import MyContainer from '../container';
@@ -70,6 +70,9 @@ const Content4 = () => {
               xs: 'static',
             }}
             bottom={'80px'}
+            onClick={() => {
+              // 打开邮箱
+            }}
           >
             Get in Touch
             <svg

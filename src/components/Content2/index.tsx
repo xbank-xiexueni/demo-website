@@ -306,7 +306,7 @@ const Content2 = () => {
               }}
               maxW='300px'
             >
-              <Button
+              <Flex
                 bg={'white'}
                 border='1px'
                 borderRadius={'33px'}
@@ -317,9 +317,16 @@ const Content2 = () => {
                 fontSize={'12px'}
                 fontWeight={400}
                 mb='8px'
+                textAlign={'center'}
+                alignItems={'center'}
+                justify={'center'}
+                // onClick={() => {
+                //   if (typeof window === undefined) return;
+                //   window.open(link);
+                // }}
               >
                 Assurance
-              </Button>
+              </Flex>
               <Image src={svg} h='44px' my='28px' />
               <Heading
                 mb='12px'

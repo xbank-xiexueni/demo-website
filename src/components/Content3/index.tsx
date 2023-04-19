@@ -57,7 +57,7 @@ const SUPPORTS = [
     id: 6,
     svg: img6,
     title: 'Swift Settlement & Withdrawal',
-    text: '1. Enjoy prompt and reliable settlement and secure withdrawals, providing peace of mind and complete control over your assets.',
+    text: 'Enjoy prompt and reliable settlement and secure withdrawals, providing peace of mind and complete control over your assets.',
   },
 ];
 

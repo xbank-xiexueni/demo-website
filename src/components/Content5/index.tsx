@@ -9,35 +9,35 @@ const DATA = [
   },
   {
     title: 'What is crypto OTC trading?',
-    text: 'xxx',
+    text: 'Crypto OTC (Over-The-Counter) trading involves private transactions executed directly between parties, bypassing traditional exchange platforms. This approach allows for enhanced flexibility, tailored service, and more competitive pricing.',
   },
   {
     title: 'What fees can I expect when trading on PrimeX?',
-    text: 'xxx',
+    text: `At PrimeX, we maintain a transparent and fair pricing structure. Our OTC Desk doesn't charge any fees – the bid or offer price you see is all-inclusive.`,
   },
   {
     title: 'What is the minimum order size for trading on PrimeX?',
-    text: 'xxx',
+    text: 'To trade on PrimeX, you must place an order of at least $50,000 AUD.',
   },
   {
     title: 'What deposit methods does PrimeX support?',
-    text: 'xxx',
+    text: 'PrimeX provides a variety of free and instant AUD deposit options, such as PayID, Direct Deposit, and POLi. Additionally, we offer methods like BPAY and RTGS for added flexibility when transferring funds to your account.',
   },
   {
     title: 'How quickly does PrimeX settle trades?',
-    text: 'xxx',
+    text: 'At PrimeX, we prioritize prompt and reliable settlements. Most trades are settled on the same day.',
   },
   {
     title: `When is PrimeX's OTC team available?`,
-    text: 'xxx',
+    text: 'Our OTC team is available daily from 9 am to 6 pm. You can reach out via direct email, live chat, or phone support for any OTC-related questions.',
   },
   {
     title: `How does PrimeX ensure optimal liquidity?`,
-    text: 'xxx',
+    text: 'PrimeX establishes connections with a global network of vetted counter-parties, enabling us to deliver top-notch liquidity. This translates to competitive pricing and swift order execution for our clients.',
   },
   {
     title: `How does PrimeX handle large trades?`,
-    text: 'xxx',
+    text: 'For sizable trades, our OTC trading desk focuses on minimizing market impact and securing the most favorable price. We execute orders using a blend of algorithmic strategies and manual oversight, ensuring an efficient and discreet trading experience.',
   },
 ];
 

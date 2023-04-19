@@ -73,6 +73,9 @@ const Header = () => {
                 backgroundColor: 'green.1',
                 borderColor: 'green.1',
               }}
+              onClick={() => {
+                // 打开邮箱
+              }}
             >
               Get in Touch
               <svg
