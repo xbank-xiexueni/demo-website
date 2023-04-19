@@ -76,9 +76,9 @@ const Content2 = () => {
       <MyContainer
         pt='40px'
         pb={{
-          md: '440px',
-          sm: '900px',
-          xs: '900px',
+          md: '240px',
+          sm: '120px',
+          xs: '120px',
         }}
       >
         {/* 1 */}
@@ -268,7 +268,7 @@ const Content2 = () => {
         </Fade>
       </MyContainer>
 
-      <Box
+      {/* <Box
         bg='white'
         position={'absolute'}
         bottom={'-60px'}
@@ -342,7 +342,7 @@ const Content2 = () => {
             </Box>
           ))}
         </Flex>
-      </Box>
+      </Box> */}
     </Box>
   );
 };

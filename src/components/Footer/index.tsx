@@ -20,17 +20,16 @@ const Footer = () => {
           mb='24px'
         >
           <Image src={LOGO} h={'50px'} alt='logo' />
-          <Image src={rightImg} h={'32px'} alt='logo' />
+          {/* <Image src={rightImg} h={'32px'} alt='logo' /> */}
         </Flex>
         <Divider color={'black.1'} />
 
         <Box pt='24px' color={'black.1'} fontSize={'12px'}>
           <Text>
-            Copyright ©2022 PrimeX INTERNATIONAL (AUS) PTY LTD. All rights
-            reserved.
+            Copyright ©2022 PrimeX Trading Pty Ltd
           </Text>
           <Flex gap={'24px'} mt='4px' mb='32px'>
-            <Flex alignItems={'center'} gap={'4px'}>
+            {/* <Flex alignItems={'center'} gap={'4px'}>
               <svg
                 width='8'
                 height='9'
@@ -45,7 +44,7 @@ const Footer = () => {
                 />
               </svg>
               <Text>0800 537 635</Text>
-            </Flex>
+            </Flex> */}
             <Flex gap={'4px'} alignItems={'center'}>
               <svg
                 width='6'
@@ -60,7 +59,7 @@ const Footer = () => {
                   fill='#000D33'
                 />
               </svg>
-              <Text>3rd Avenue, 83 Manhattan, London, UK</Text>
+              <Text>336/401 Sussex St,Haymarket NSW 2000</Text>
             </Flex>
           </Flex>
         </Box>

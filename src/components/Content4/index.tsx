@@ -1,16 +1,35 @@
-import { Box, Button, Flex, Heading } from '@chakra-ui/react';
-import React from 'react';
+import { Box, Button, chakra, Flex, Heading } from '@chakra-ui/react';
+import React, { useMemo, useRef } from 'react';
 import bg from '../../images/content4-bg.png';
 import MyContainer from '../container';
 import Fade from 'react-reveal/Fade';
+import useHover from 'ahooks/lib/useHover';
 
 const Content4 = () => {
+  const height = useMemo(()=> {
+    const windowWidth = document.documentElement.clientWidth || document.body.clientWidth
+    if(!windowWidth) return 748
+    return windowWidth * 748 / 1440
+  },[])
+
+  const mobileHeight = useMemo(()=> {
+    const windowWidth = document.documentElement.clientWidth || document.body.clientWidth
+    if(!windowWidth) return 748
+    return windowWidth * 748 / 390
+  },[])
+
+  const ref = useRef(null);
+  const isHovering = useHover(ref);
   return (
     <Box
       backgroundImage={bg}
       backgroundSize={'cover'}
       w='100vw'
-      h='748px'
+      h={{
+        md:`${height}px`,
+        sm:`${mobileHeight}px`,
+        xs:`${mobileHeight}px`,
+      }}
       bgPos={'0 0'}
       position={'relative'}
     >
@@ -58,10 +77,12 @@ const Content4 = () => {
               sm: '24px',
               xs: '24px',
             }}
+            ref={ref}
             borderRadius={26}
             _hover={{
-              bgColor: 'green.1',
+              backgroundColor: 'green.1',
               borderColor: 'green.1',
+              color:'black.2'
             }}
             position={{
               md: 'absolute',
@@ -86,7 +107,7 @@ const Content4 = () => {
               <g clipPath='url(#clip0_1_142)'>
                 <path
                   d='M4.22815 4.46632L4.22815 5.79568L9.49374 5.8004L3.75675 11.5374L4.69956 12.4802L10.4366 6.7432L10.4318 12.0088L11.7706 12.0088L11.7706 4.46632L4.22815 4.46632Z'
-                  fill='#EBF0FF'
+                  fill={isHovering?'#05040A':'#EBF0FF'}
                 />
               </g>
               <defs>

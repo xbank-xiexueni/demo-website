@@ -1,13 +1,16 @@
 import { Box, Image, Flex, Button } from '@chakra-ui/react';
-import React from 'react';
+import React, { useRef } from 'react';
 import MyContainer from '../container';
 import Icon from '../../images/headerIcon.png';
 import { navigate } from 'gatsby';
+import useHover from 'ahooks/lib/useHover';
 
 const MENU_LIST = ['About us', 'Why PrimeX', 'How to trade with us', 'FAQs'];
 
 const Header = () => {
   const isBrowser = typeof window !== 'undefined';
+  const ref = useRef(null);
+  const isHovering = useHover(ref);
   return (
     <Box
       position={'absolute'}
@@ -56,6 +59,9 @@ const Header = () => {
                 onClick={() => {
                   navigate(`#${item.toLowerCase().replaceAll(' ', '-')}`);
                 }}
+                _hover={{
+                  opacity:0.75
+                }}
               >
                 {item}
               </Box>
@@ -66,12 +72,14 @@ const Header = () => {
               borderColor={'font.primary'}
               fontSize={'12px'}
               fontWeight={'500'}
+              ref={ref}
               px='16px'
               py='12px'
               bg='transparent'
               _hover={{
                 backgroundColor: 'green.1',
                 borderColor: 'green.1',
+                color:'black.2'
               }}
               onClick={() => {
                 // 打开邮箱
@@ -90,7 +98,7 @@ const Header = () => {
                 <g clipPath='url(#clip0_1_142)'>
                   <path
                     d='M4.22815 4.46632L4.22815 5.79568L9.49374 5.8004L3.75675 11.5374L4.69956 12.4802L10.4366 6.7432L10.4318 12.0088L11.7706 12.0088L11.7706 4.46632L4.22815 4.46632Z'
-                    fill='#EBF0FF'
+                    fill={isHovering?'#05040A':'#EBF0FF'}
                   />
                 </g>
                 <defs>

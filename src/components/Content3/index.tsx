@@ -20,7 +20,6 @@ import img5 from '../../images/content3/Commence Trading.png';
 import img6 from '../../images/content3/Swift Settlement & Withdrawal.png';
 
 import Slider from 'react-slick';
-import { CONTENT1_HEIGHT } from '../Content1';
 
 const SUPPORTS = [
   {
@@ -67,7 +66,7 @@ const SUPPORTS = [
 // };
 
 const settings = {
-  infinite: true,
+  infinite: false,
   centerPadding: '100px',
   // slidesToShow: 5,
   swipeToSlide: true,
@@ -115,7 +114,7 @@ const INITIAL_IMAGE_PROPS: ImageProps = {
 };
 
 const MARGIN_BOTTOM = 164;
-const PADDING_Y = 240;
+const PADDING_Y = 400;
 
 const Content3 = () => {
   // const ref0 = useRef(null);
@@ -137,7 +136,7 @@ const Content3 = () => {
     if (typeof window === undefined) return;
 
     const parentTop =
-      CONTENT1_HEIGHT +
+    (document.getElementById('bgx')?.clientHeight || 0) +
       PADDING_Y +
       MARGIN_BOTTOM +
       (document.getElementById('about-us')?.clientHeight || 0) +
@@ -168,8 +167,8 @@ const Content3 = () => {
       position={'relative'}
       pt={{
         md: `${PADDING_Y}px`,
-        sm: '120px',
-        xs: '120px',
+        sm: '240px',
+        xs: '240px',
       }}
       pb='120px'
     >
@@ -266,6 +265,7 @@ const Content3 = () => {
                 w='16.6%'
                 key={item}
                 h='2px'
+                transition={'all 0.3s'}
                 bgColor={
                   slideIndex === item ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
                 }

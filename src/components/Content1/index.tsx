@@ -1,5 +1,5 @@
 import { Box, Flex, Heading } from '@chakra-ui/react';
-import React, { useLayoutEffect } from 'react';
+import React, { useLayoutEffect, useMemo } from 'react';
 
 import '@/style/global.scss';
 import bg from '../../images/primaryBg.png';
@@ -7,6 +7,7 @@ import ResponsiveBox from '../ResponsiveBox';
 import MyContainer from '../container';
 import Header from '../Header';
 import Lottie from 'lottie-react';
+import './index.css'
 // @ts-ignore
 import scrollJson from '../../constants/Scroll-helper.json';
 
@@ -26,13 +27,20 @@ const Content1 = () => {
       bgx.onmousemove = (e) => {
         const currX = cliX + (e.clientX - enterX) * 0.2;
         const currY = cliY + (e.clientY - enterY) * 0.2;
-        if (currX >= -180 && currX <= 0 && !!bgx) {
-          // @ts-ignore
-          bgx.style['background-position'] = `${currX}px ${currY}px`;
+        if (currX >= -150 && currX <= 0 && !!bgx) {
+          bgx.style.setProperty('--x', currX + "px");
+          bgx.style.setProperty('--y', currY + "px")
         }
       };
     };
   }, []);
+
+  const minHeight = useMemo(()=> {
+    const windowWidth = document.documentElement.clientWidth || document.body.clientWidth
+    if(!windowWidth) return 982
+    return windowWidth * 982 / 1440
+  },[])
+  
   return (
     <Box position={'relative'}>
       <Header />
@@ -78,11 +86,12 @@ const Content1 = () => {
             w='100vw'
             m={'0 auto'}
             overflow={'hidden'}
-            minH={`${CONTENT1_HEIGHT}px`}
+            minH={`${minHeight}px`}
             backgroundSize={'125%'}
             bgPos={'0 0'}
             id='bgx'
-            transition={'all .8s cubic-bezier(0.1, 0.7, 0.7, 1);'}
+            className='bgx'
+            transition={'all 1s'}
           >
             <MyContainer position={'relative'}>
               <Flex
