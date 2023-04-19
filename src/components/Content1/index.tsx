@@ -1,5 +1,5 @@
 import { Box, Flex, Heading } from '@chakra-ui/react';
-import React, { useEffect, useMemo } from 'react';
+import React, { useLayoutEffect, useMemo } from 'react';
 
 import '@/style/global.scss';
 import bg from '../../images/primaryBg.png';
@@ -14,7 +14,7 @@ import scrollJson from '../../constants/Scroll-helper.json';
 export const CONTENT1_HEIGHT = 982;
 const Content1 = () => {
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     console.log('1.typeof document:',typeof document,typeof window === 'undefined','typeof window:',typeof window)
     if (typeof window === 'undefined') return;
     const bgx = document.getElementById('bgx');
@@ -103,7 +103,6 @@ const Content1 = () => {
             overflow={'hidden'}
             minH={`${minHeight}px`}
             backgroundSize={'125%'}
-            bgPos={'0 0'}
             id='bgx'
             className='bgx'
             transition={'all 1s'}

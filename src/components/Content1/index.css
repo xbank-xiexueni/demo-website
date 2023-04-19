@@ -1,5 +1,5 @@
 .bgx {
-    --x: 0px;
+  --x: 0px;
   --y: 0px;
   background-position: var(--x) var(--y);
 }
