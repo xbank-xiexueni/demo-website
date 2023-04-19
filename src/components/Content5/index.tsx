@@ -55,14 +55,10 @@ const Item: FunctionComponent<
       borderBottomWidth={1}
       borderColor={'rgba(235, 240, 255, 0.1)'}
       cursor={'pointer'}
+      onClick={() => setFlag((prev) => !prev)}
       {...rest}
     >
-      <Flex
-        justify={'space-between'}
-        onClick={() => setFlag((prev) => !prev)}
-        alignItems={'flex-start'}
-        gap={'32px'}
-      >
+      <Flex justify={'space-between'} alignItems={'flex-start'} gap={'32px'}>
         <Text fontSize={'22px'} fontFamily={'Forum'} fontWeight={'400'}>
           {title}
         </Text>
