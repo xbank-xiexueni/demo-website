@@ -282,7 +282,15 @@ const Content3 = () => {
             sm: 'none',
             xs: 'none',
           }}
+          position={'relative'}
         >
+          <Box
+            position={'absolute'}
+            h='100%'
+            w='2px'
+            bgColor={'rgba(1, 224, 181, 0.05)'}
+          />
+
           {SUPPORTS.map(({ id, title, text, svg }) => (
             <Flex {...INITIAL_BOX_PROPS} key={id}>
               <Box
@@ -301,9 +309,7 @@ const Content3 = () => {
                   sm: 2,
                   xs: 3,
                 }}
-                borderLeftColor={
-                  current === id ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
-                }
+                borderLeftColor={current === id ? 'green.1' : 'transparent'}
                 borderLeftWidth={2}
                 opacity={current === id ? 1 : 0.3}
               >
