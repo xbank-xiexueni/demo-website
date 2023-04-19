@@ -151,6 +151,8 @@ const Content3 = () => {
   const [current, setCurrent] = useState<number>();
 
   useEffect(() => {
+    if (typeof window === undefined) return;
+
     const parentTop =
       CONTENT1_HEIGHT +
       PADDING_Y +

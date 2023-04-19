@@ -1,5 +1,5 @@
 import { Box, Flex, Text, Image, Button, Heading } from '@chakra-ui/react';
-import React, { useRef } from 'react';
+import React from 'react';
 
 import '@/style/global.scss';
 import MyContainer from '../container';
@@ -12,11 +12,8 @@ import img6 from '../../images/content2/6.svg';
 import payImg from '../../images/content2/pay.svg';
 import googleImg from '../../images/content2/google.svg';
 import seqImg from '../../images/content2/seq.svg';
-import useInViewport from 'ahooks/lib/useInViewport';
 // t
 import Fade from 'react-reveal/Fade';
-import { useDebounce, useScroll } from 'ahooks';
-import { CONTENT1_HEIGHT } from '../Content1';
 
 const STEPS = [
   {
@@ -70,23 +67,6 @@ const SUPPORTS = [
 ];
 
 const Content2 = () => {
-  const scroll = useScroll(
-    document,
-    (val) => val.top > CONTENT1_HEIGHT && val.top < CONTENT1_HEIGHT + 200
-  );
-  const [inViewport, ratio] = useInViewport(
-    () => document.getElementById('children'),
-    {
-      threshold: 0.8,
-      // root: () => document.getElementById('about-us'),
-    }
-  );
-  console.log(
-    '🚀 ~ file: index.tsx:84 ~ Content2 ~ inViewport:',
-    inViewport,
-    ratio
-  );
-
   return (
     <Box
       bg='linear-gradient(180deg, #000228 7.52%, #2838E4 100%)'

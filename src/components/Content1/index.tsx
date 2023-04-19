@@ -10,6 +10,7 @@ import Header from '../Header';
 export const CONTENT1_HEIGHT = 982;
 const Content1 = () => {
   useLayoutEffect(() => {
+    if (typeof window === undefined) return;
     let bgx = document.getElementById('bgx');
     if (!bgx) return;
 
