@@ -1,5 +1,5 @@
 import { Box, Flex, Heading } from '@chakra-ui/react';
-import React, { useLayoutEffect, useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import '@/style/global.scss';
 import bg from '../../images/primaryBg.png';
@@ -14,44 +14,40 @@ import scrollJson from '../../constants/Scroll-helper.json';
 export const CONTENT1_HEIGHT = 982;
 const Content1 = () => {
 
-  useLayoutEffect(() => {
-    console.log('1.typeof document:',typeof document,typeof window === 'undefined','typeof window:',typeof window)
-    if (typeof window === 'undefined') return;
-    const bgx = document.getElementById('bgx');
-    console.log('2. bgx:',bgx)
-    if (!bgx) return;
-    bgx.onmouseenter = (e) => {
-      const enterX = e.clientX;
-      console.log('3. enterX:',enterX)
-      const enterY = e.clientY;
-      if (!bgx) return;
-      const cliX = parseInt(bgx.style.backgroundPosition.split(' ')[0]) || 0;
-      const cliY = parseInt(bgx.style.backgroundPosition.split(' ')[1]) || 0;
-      console.log('4. cliX:',cliX)
+  const [enterP,setEnterP] = useState({
+    enterX:0,
+    enterY:0
+  })
+  const [currentP,setCurrentP] = useState({
+    currX:0,
+    currY:0
+  })
 
-      bgx.onmousemove = (e) => {
-        const currX = cliX + (e.clientX - enterX) * 0.2;
-        const currY = cliY + (e.clientY - enterY) * 0.2;
-        console.log('5. currX:',currX)
+  // useLayoutEffect(() => {
+  //   if (typeof window === 'undefined') return;
+  //   const bgx = document.getElementById('bgx');
+  //   if (!bgx) return;
+  //   bgx.onmouseenter = (e) => {
+  //     const enterX = e.clientX;
+  //     const enterY = e.clientY;
+  //     if (!bgx) return;
+  //     const cliX = parseInt(bgx.style.backgroundPosition.split(' ')[0]) || 0;
+  //     const cliY = parseInt(bgx.style.backgroundPosition.split(' ')[1]) || 0;
 
-        if (currX >= -150 && currX <= 0 && !!bgx) {
-          console.log('6. move')
-          bgx.style.setProperty('--x', currX + "px");
-          bgx.style.setProperty('--y', currY + "px")
-        }
-      };
-    };
-  }, []);
+  //     bgx.onmousemove = (e) => {
+  //       const currX = cliX + (e.clientX - enterX) * 0.2;
+  //       const currY = cliY + (e.clientY - enterY) * 0.2;
+  //       if (currX >= -200 && currX <= 0 && !!bgx) {
+  //         bgx.style.setProperty('--x', currX + "px");
+  //         bgx.style.setProperty('--y', currY + "px")
+  //       }
+  //     };
+  //   };
+  // }, []);
 
   const minHeight = useMemo(()=> {
-    console.log('1. typeof document:',typeof document,typeof window === 'undefined','typeof window:',typeof window)
-
     if (typeof window === 'undefined') return 982; 
-    console.log('2. typeof document:',typeof document,typeof window === 'undefined','typeof window:',typeof window)
-
     const windowWidth = document.documentElement.clientWidth || document?.body?.clientWidth
-    console.log('3. windowWidth:',windowWidth)
-
     if(!windowWidth) return 982
     return windowWidth * 982 / 1440
   },[])
@@ -104,8 +100,34 @@ const Content1 = () => {
             minH={`${minHeight}px`}
             backgroundSize={'125%'}
             id='bgx'
+            onMouseEnter={(e)=> {
+              setEnterP({
+                enterX:e.clientX,
+                enterY:e.clientY
+              })
+            }}
+            onMouseMove={(e)=> {
+              const bgx = document.getElementById('bgx');
+              if(!bgx) return
+              const {enterX,enterY} = enterP
+              const cliX = parseInt(bgx.style.backgroundPosition.split(' ')[0]) || 0;
+              const cliY = parseInt(bgx.style.backgroundPosition.split(' ')[1]) || 0;
+              const currX = cliX + (e.clientX - enterX) * 0.2;
+              const currY = cliY + (e.clientY - enterY) * 0.2;
+              if (currX >= -500 && currX <= 0) {
+                setCurrentP({
+                  currX,
+                  currY
+                })
+              }
+            }}
             className='bgx'
             transition={'all 1s'}
+            style={{
+              // @ts-ignore
+              '--x':`${currentP?.currX}px`,
+              '--y':`${currentP?.currY}px`,
+            }}
           >
             <MyContainer position={'relative'}>
               <Flex
