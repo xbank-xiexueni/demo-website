@@ -7,14 +7,14 @@ import useHover from 'ahooks/lib/useHover';
 
 const Content4 = () => {
   const height = useMemo(()=> {
-    if (typeof document === undefined) return 748; 
+    if (typeof document === 'undefined') return 748; 
     const windowWidth = document.documentElement.clientWidth || document.body.clientWidth
     if(!windowWidth) return 748
     return windowWidth * 748 / 1440
   },[])
 
   const mobileHeight = useMemo(()=> {
-    if (typeof document === undefined) return 748; 
+    if (typeof document === 'undefined') return 748; 
     const windowWidth = document.documentElement.clientWidth || document.body.clientWidth
     if(!windowWidth) return 748
     return windowWidth * 748 / 390
@@ -94,7 +94,7 @@ const Content4 = () => {
             bottom={'80px'}
             onClick={() => {
               // 打开邮箱
-              if (typeof window === undefined) return;
+              if (typeof window === 'undefined') return;
               window.location.href = 'mailto:info@primextrading.com.au';
             }}
           >

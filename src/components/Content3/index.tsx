@@ -133,7 +133,7 @@ const Content3 = () => {
   const [current, setCurrent] = useState<number>();
 
   useEffect(() => {
-    if (typeof document === undefined) return;
+    if (typeof document === 'undefined') return;
 
     const parentTop =
     (document.getElementById('bgx')?.clientHeight || 0) +
