@@ -1,26 +1,20 @@
-import { Box, Button, chakra, Flex, Heading } from '@chakra-ui/react';
-import React, { useMemo, useRef } from 'react';
+import { Box, Button, Flex, Heading } from '@chakra-ui/react';
+import React, { FunctionComponent, useMemo, useRef } from 'react';
 import bg from '../../images/content4-bg.png';
 import MyContainer from '../container';
 import Fade from 'react-reveal/Fade';
 import useHover from 'ahooks/lib/useHover';
 
-const Content4 = () => {
-  const height = useMemo(()=> {
-    if (typeof window === 'undefined') return 748;
+const Content4: FunctionComponent<{ windowW: number }> = ({ windowW }) => {
+  const height = useMemo(() => {
+    if (!windowW) return 748;
+    return (windowW * 748) / 1440;
+  }, [windowW]);
 
-    const windowWidth = document.documentElement.clientWidth || document.body.clientWidth
-    if(!windowWidth) return 748
-    return windowWidth * 748 / 1440
-  },[])
-
-  const mobileHeight = useMemo(()=> {
-    if (typeof window === 'undefined') return 748;
-
-    const windowWidth = document.documentElement.clientWidth || document.body.clientWidth
-    if(!windowWidth) return 748
-    return windowWidth * 748 / 390
-  },[])
+  const mobileHeight = useMemo(() => {
+    if (!windowW) return 748;
+    return (windowW * 748) / 390;
+  }, [windowW]);
 
   const ref = useRef(null);
   const isHovering = useHover(ref);
@@ -30,9 +24,9 @@ const Content4 = () => {
       backgroundSize={'cover'}
       w='100vw'
       h={{
-        md:`${height}px`,
-        sm:`${mobileHeight}px`,
-        xs:`${mobileHeight}px`,
+        md: `${height}px`,
+        sm: `${mobileHeight}px`,
+        xs: `${mobileHeight}px`,
       }}
       bgPos={'0 0'}
       position={'relative'}
@@ -63,6 +57,7 @@ const Content4 = () => {
                 sm: '90%',
                 xs: '90%',
               }}
+              fontWeight={'400'}
             >
               Partner with PrimeX and experience the pinnacle of bespoke crypto
               trading. Embrace the future of finance with us.
@@ -86,7 +81,7 @@ const Content4 = () => {
             _hover={{
               backgroundColor: 'green.1',
               borderColor: 'green.1',
-              color:'black.2'
+              color: 'black.2',
             }}
             position={{
               md: 'absolute',
@@ -111,7 +106,7 @@ const Content4 = () => {
               <g clipPath='url(#clip0_1_142)'>
                 <path
                   d='M4.22815 4.46632L4.22815 5.79568L9.49374 5.8004L3.75675 11.5374L4.69956 12.4802L10.4366 6.7432L10.4318 12.0088L11.7706 12.0088L11.7706 4.46632L4.22815 4.46632Z'
-                  fill={isHovering?'#05040A':'#EBF0FF'}
+                  fill={isHovering ? '#05040A' : '#EBF0FF'}
                 />
               </g>
               <defs>

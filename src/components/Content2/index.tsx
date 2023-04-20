@@ -226,41 +226,42 @@ const Content2 = () => {
                 flexWrap={'wrap'}
               >
                 {STEPS.map(({ svg, title, text }) => (
-                  <Box
-                    key={title}
-                    borderTop={'1px solid rgba(235, 240, 255, 0.3)'}
-                    pt='32px'
-                    pb={{
-                      md: '100px',
-                      sm: '24px',
-                      xs: '24px',
-                    }}
-                    w={{
-                      xl: '242px',
-                      lg: '200px',
-                      md: '302px',
-                      xs: '100%',
-                      sm: '100%',
-                    }}
-                  >
-                    <Image
-                      src={svg}
-                      h={{ md: '44px', sm: '32px', xs: '32px' }}
-                      mb='32px'
-                    />
-                    <Heading
-                      fontWeight={400}
-                      fontSize={{
-                        md: '40px',
-                        sm: '28px',
-                        xs: '28px',
+                  <Fade key={title} bottom opposite cascade duration={1500}>
+                    <Box
+                      borderTop={'1px solid rgba(235, 240, 255, 0.3)'}
+                      pt='32px'
+                      pb={{
+                        md: '100px',
+                        sm: '24px',
+                        xs: '24px',
                       }}
-                      mb='16px'
+                      w={{
+                        xl: '242px',
+                        lg: '200px',
+                        md: '302px',
+                        xs: '100%',
+                        sm: '100%',
+                      }}
                     >
-                      {title}
-                    </Heading>
-                    <Text>{text}</Text>
-                  </Box>
+                      <Image
+                        src={svg}
+                        h={{ md: '44px', sm: '32px', xs: '32px' }}
+                        mb='32px'
+                      />
+                      <Heading
+                        fontWeight={400}
+                        fontSize={{
+                          md: '40px',
+                          sm: '28px',
+                          xs: '28px',
+                        }}
+                        mb='16px'
+                      >
+                        {title}
+                      </Heading>
+                      <Text>{text}</Text>
+                    </Box>
+                  </Fade>
                 ))}
               </Flex>
             </Box>

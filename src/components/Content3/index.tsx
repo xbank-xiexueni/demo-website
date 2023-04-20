@@ -135,7 +135,7 @@ const Content3 = () => {
   useEffect(() => {
     if (typeof window === 'undefined') return;
     const parentTop =
-    (document.getElementById('bgx')?.clientHeight || 0) +
+      (document.getElementById('bgx')?.clientHeight || 0) +
       PADDING_Y +
       MARGIN_BOTTOM +
       (document.getElementById('about-us')?.clientHeight || 0) +
@@ -156,11 +156,11 @@ const Content3 = () => {
 
       setCurrent(Math.ceil(targetIndex));
     });
-    return ()=> {
-      removeEventListener('scroll',()=> {
-        setCurrent(undefined)
-      })
-    }
+    return () => {
+      removeEventListener('scroll', () => {
+        setCurrent(undefined);
+      });
+    };
   }, []);
 
   const [slideIndex, setSlideIndex] = useState(0);

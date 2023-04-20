@@ -1,5 +1,5 @@
 import { Box, Flex, Heading } from '@chakra-ui/react';
-import React, { useMemo, useState } from 'react';
+import React, { FunctionComponent, useMemo, useState } from 'react';
 
 import '@/style/global.scss';
 import bg from '../../images/primaryBg.png';
@@ -7,21 +7,14 @@ import ResponsiveBox from '../ResponsiveBox';
 import MyContainer from '../container';
 import Header from '../Header';
 import Lottie from 'lottie-react';
-import './index.css'
+import './index.css';
 // @ts-ignore
 import scrollJson from '../../constants/Scroll-helper.json';
 
 export const CONTENT1_HEIGHT = 982;
-const Content1 = () => {
-
-  const [enterP,setEnterP] = useState({
-    enterX:0,
-    enterY:0
-  })
-  const [currentP,setCurrentP] = useState({
-    currX:0,
-    currY:0
-  })
+const Content1: FunctionComponent<{ windowW: number }> = ({ windowW }) => {
+  const [enterX, setEnterX] = useState(0);
+  const [currentX, setCurrentX] = useState(0);
 
   // useLayoutEffect(() => {
   //   if (typeof window === 'undefined') return;
@@ -45,13 +38,11 @@ const Content1 = () => {
   //   };
   // }, []);
 
-  const minHeight = useMemo(()=> {
-    if (typeof window === 'undefined') return 982; 
-    const windowWidth = document.documentElement.clientWidth || document?.body?.clientWidth
-    if(!windowWidth) return 982
-    return windowWidth * 982 / 1440
-  },[])
-  
+  const minHeight = useMemo(() => {
+    if (!windowW) return 982;
+    return (windowW * 982) / 1440;
+  }, [windowW]);
+
   return (
     <Box position={'relative'}>
       <Header />
@@ -100,33 +91,35 @@ const Content1 = () => {
             minH={`${minHeight}px`}
             backgroundSize={'125%'}
             id='bgx'
-            onMouseEnter={(e)=> {
-              setEnterP({
-                enterX:e.clientX,
-                enterY:e.clientY
-              })
+            backgroundRepeat={'no-repeat'}
+            onMouseEnter={(e) => {
+              setEnterX(e.clientX);
             }}
-            onMouseMove={(e)=> {
+            onMouseMove={(e) => {
               const bgx = document.getElementById('bgx');
-              if(!bgx) return
-              const {enterX,enterY} = enterP
-              const cliX = parseInt(bgx.style.backgroundPosition.split(' ')[0]) || 0;
-              const cliY = parseInt(bgx.style.backgroundPosition.split(' ')[1]) || 0;
+              if (!bgx) return;
+              const cliX =
+                parseInt(bgx.style.backgroundPosition.split(' ')[0]) || 0;
+
+              // -100 100
               const currX = cliX + (e.clientX - enterX) * 0.2;
-              const currY = cliY + (e.clientY - enterY) * 0.2;
-              if (currX >= -500 && currX <= 0) {
-                setCurrentP({
-                  currX,
-                  currY
-                })
+              console.log('🚀 ~ file: index.tsx:106 ~ currX:', currX);
+              if (currX > 0) {
+                setCurrentX(0);
+              } else if (currX < -150) {
+                setCurrentX(-150);
+              } else {
+                setCurrentX(currX);
               }
             }}
+            onMouseLeave={() => {
+              setCurrentX(0);
+            }}
+            transition={'all .8s'}
             className='bgx'
-            transition={'all 1s'}
             style={{
               // @ts-ignore
-              '--x':`${currentP?.currX}px`,
-              '--y':`${currentP?.currY}px`,
+              '--x': `${currentX}px`,
             }}
           >
             <MyContainer position={'relative'}>

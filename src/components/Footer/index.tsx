@@ -25,9 +25,7 @@ const Footer = () => {
         <Divider color={'black.1'} />
 
         <Box pt='24px' color={'black.1'} fontSize={'12px'}>
-          <Text>
-            Copyright ©2022 PrimeX Trading Pty Ltd
-          </Text>
+          <Text>Copyright ©2022 PrimeX Trading Pty Ltd</Text>
           <Flex gap={'24px'} mt='4px' mb='32px'>
             {/* <Flex alignItems={'center'} gap={'4px'}>
               <svg
@@ -63,7 +61,7 @@ const Footer = () => {
             </Flex>
           </Flex>
         </Box>
-        <Box w='100%'>
+        {/* <Box w='100%'>
           <Text
             fontSize={'12px'}
             transform={'scale(0.83,0.83)'}
@@ -81,7 +79,7 @@ const Footer = () => {
             and/or on any increase in the value of your crypto assets and you
             should seek independent advice on your taxation position.
           </Text>
-        </Box>
+        </Box> */}
       </MyContainer>
     </Box>
   );
