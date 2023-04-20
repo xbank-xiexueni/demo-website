@@ -164,7 +164,8 @@ const Content3 = () => {
   }, []);
 
   const [slideIndex, setSlideIndex] = useState(0);
-  const sliderRef = useRef(null);
+  const sliderRef1 = useRef(null);
+  const sliderRef2 = useRef(null);
 
   return (
     <Box
@@ -174,11 +175,11 @@ const Content3 = () => {
         sm: '240px',
         xs: '240px',
       }}
-      pb='120px'
+      pb="120px"
     >
       <MyContainer>
         <Heading
-          id='how-to-trade-with-us'
+          id="how-to-trade-with-us"
           textAlign={'center'}
           px={{
             lg: '200px',
@@ -186,7 +187,7 @@ const Content3 = () => {
             sm: '20px',
             xs: '20px',
           }}
-          color='green.1'
+          color="green.1"
           mb={{
             md: `${MARGIN_BOTTOM}px`,
             sm: '100px',
@@ -205,8 +206,8 @@ const Content3 = () => {
         <Flex
           justifyContent={'flex-start'}
           alignItems={'center'}
-          gap='8px'
-          mb='60px'
+          gap="8px"
+          mb="60px"
           display={{
             md: 'flex',
             sm: 'none',
@@ -215,39 +216,38 @@ const Content3 = () => {
         >
           <Box
             bgColor={'green.1'}
-            w='9px'
-            h='9px'
+            w="9px"
+            h="9px"
             display={'flex'}
             borderRadius={'100%'}
           />
           <Text fontSize={'12px'}>How to trade with us</Text>
         </Flex>
 
-        {/* mobile  */}
+        {/* mobile xs  sliderRef2 */}
         <Flex
           display={{
-            md: 'none',
-            sm: 'block',
+            sm: 'none',
             xs: 'block',
           }}
-          w='100%'
+          w="100%"
         >
           <Slider
             {...settings}
-            ref={sliderRef}
+            ref={sliderRef2}
             beforeChange={(current, next) => setSlideIndex(next)}
           >
             {SUPPORTS.map((item) => (
               <Box
                 {...INITIAL_BOX_PROPS}
                 key={item.id}
-                h='502px'
-                maxW='310px'
-                mr='24px'
+                h="502px"
+                maxW="310px"
+                mr="24px"
               >
-                <Image src={item.svg} boxSize={'240px'} mb='16px' />
+                <Image src={item.svg} boxSize={'240px'} mb="16px" />
                 <Box>
-                  <Heading fontSize={'28px'} mb='20px' fontWeight={400}>
+                  <Heading fontSize={'28px'} mb="20px" fontWeight={400}>
                     {item.title}
                   </Heading>
                   <Text opacity={0.8}>{item.text}</Text>
@@ -257,18 +257,83 @@ const Content3 = () => {
           </Slider>
 
           {/* dots */}
-          <Flex my='30px'>
+          <Flex
+            my="30px"
+            display={{
+              sm: 'none',
+              xs: 'flex',
+            }}
+          >
             {[0, 1, 2, 3, 4, 5].map((item) => (
               <Flex
                 cursor={'pointer'}
                 onClick={() => {
-                  if (!sliderRef.current) return;
+                  if (!sliderRef2.current) return;
                   // @ts-ignore
-                  sliderRef.current?.slickGoTo(item);
+                  sliderRef2.current?.slickGoTo(item);
                 }}
-                w='16.6%'
+                w={'16.6%'}
                 key={item}
-                h='2px'
+                h="2px"
+                transition={'all 0.3s'}
+                bgColor={
+                  slideIndex === item ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
+                }
+              />
+            ))}
+          </Flex>
+        </Flex>
+
+        <Flex
+          display={{
+            md: 'none',
+            sm: 'block',
+            xs: 'none',
+          }}
+          w="100%"
+        >
+          <Slider
+            {...settings}
+            slidesToScroll={2}
+            ref={sliderRef1}
+            beforeChange={(current, next) => setSlideIndex(next)}
+          >
+            {SUPPORTS.map((item) => (
+              <Box
+                {...INITIAL_BOX_PROPS}
+                key={item.id}
+                h="502px"
+                maxW="310px"
+                mr="24px"
+              >
+                <Image src={item.svg} boxSize={'240px'} mb="16px" />
+                <Box>
+                  <Heading fontSize={'28px'} mb="20px" fontWeight={400}>
+                    {item.title}
+                  </Heading>
+                  <Text opacity={0.8}>{item.text}</Text>
+                </Box>
+              </Box>
+            ))}
+          </Slider>
+          <Flex
+            my="30px"
+            display={{
+              sm: 'flex',
+              xs: 'none',
+            }}
+          >
+            {[0, 2, 4].map((item) => (
+              <Flex
+                cursor={'pointer'}
+                onClick={() => {
+                  if (!sliderRef2.current) return;
+                  // @ts-ignore
+                  sliderRef2.current?.slickGoTo(item);
+                }}
+                w={'33.3%'}
+                key={item}
+                h="2px"
                 transition={'all 0.3s'}
                 bgColor={
                   slideIndex === item ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
@@ -291,8 +356,8 @@ const Content3 = () => {
         >
           <Box
             position={'absolute'}
-            h='100%'
-            w='2px'
+            h="100%"
+            w="2px"
             bgColor={'rgba(1, 224, 181, 0.05)'}
           />
 
@@ -324,7 +389,7 @@ const Content3 = () => {
                     sm: '28px',
                     xs: '28px',
                   }}
-                  mb='20px'
+                  mb="20px"
                   fontWeight={400}
                 >
                   {title}

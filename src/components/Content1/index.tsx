@@ -56,7 +56,7 @@ const Content1: FunctionComponent<{
         mobile={
           <Flex
             backgroundImage={bg}
-            w='100vw'
+            w="100vw"
             m={'0 auto'}
             minH={'844px'}
             backgroundSize={'cover'}
@@ -64,7 +64,13 @@ const Content1: FunctionComponent<{
             bgRepeat={'no-repeat'}
           >
             <MyContainer position={'relative'}>
-              <Flex position={'absolute'} bottom={'124px'}>
+              <Flex
+                position={'absolute'}
+                top={
+                  height > 844 ? 'unset' : `${(height || 844) - 124 - 160}px`
+                }
+                bottom={844 < height ? '124px' : `unset`}
+              >
                 <Heading
                   fontSize={'44px'}
                   lineHeight={'1.2'}
@@ -74,7 +80,11 @@ const Content1: FunctionComponent<{
                   Institutional-grade solutions with PrimeX.
                 </Heading>
               </Flex>
-              <Flex position={'absolute'} bottom={'24px'}>
+              <Flex
+                position={'absolute'}
+                top={height > 844 ? 'unset' : `${(height || 844) - 24 - 50}px`}
+                bottom={844 < height ? '24px' : `unset`}
+              >
                 <Lottie
                   animationData={scrollJson}
                   loop={true}
@@ -90,7 +100,7 @@ const Content1: FunctionComponent<{
         pc={
           <Flex
             backgroundImage={bg}
-            w='100vw'
+            w="100vw"
             m={'0 auto'}
             overflow={'hidden'}
             minH={{
@@ -99,7 +109,7 @@ const Content1: FunctionComponent<{
               md: `${minHeight}px`,
             }}
             backgroundSize={'125%'}
-            id='bgx'
+            id="bgx"
             backgroundRepeat={'no-repeat'}
             onMouseEnter={(e) => {
               setEnterX(e.clientX);
@@ -123,7 +133,7 @@ const Content1: FunctionComponent<{
               setCurrentX('center');
             }}
             transition={'all .8s'}
-            className='bgx'
+            className="bgx"
             style={{
               // @ts-ignore
               '--x': currentX,
@@ -155,7 +165,7 @@ const Content1: FunctionComponent<{
                   fontSize={'66px'}
                   lineHeight={'1.2'}
                   textShadow={'1px 0px 2px rgba(0, 0, 0, 0.1)'}
-                  w='80%'
+                  w="80%"
                   fontWeight={400}
                 >
                   Institutional-grade solutions with PrimeX.
