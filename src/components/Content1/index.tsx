@@ -19,7 +19,7 @@ const Content1: FunctionComponent<{
   };
 }> = ({ windowSize: { width, height } }) => {
   const [enterX, setEnterX] = useState(0);
-  const [currentX, setCurrentX] = useState(0);
+  const [currentX, setCurrentX] = useState('0px');
 
   // useLayoutEffect(() => {
   //   if (typeof window === 'undefined') return;
@@ -112,21 +112,21 @@ const Content1: FunctionComponent<{
               // -100 100
               const currX = cliX + (e.clientX - enterX) * 0.2;
               if (currX > 0) {
-                setCurrentX(0);
+                setCurrentX('0px');
               } else if (currX < -150) {
-                setCurrentX(-150);
+                setCurrentX(`${-150}px`);
               } else {
-                setCurrentX(currX);
+                setCurrentX(`${currX}px`);
               }
             }}
             onMouseLeave={() => {
-              setCurrentX(0);
+              setCurrentX('center');
             }}
             transition={'all .8s'}
             className='bgx'
             style={{
               // @ts-ignore
-              '--x': `${currentX}px`,
+              '--x': currentX,
             }}
           >
             <MyContainer position={'relative'}>

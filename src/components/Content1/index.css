@@ -1,5 +1,5 @@
 .bgx {
-  --x: 0px;
-  --y: 0px;
+  --x: center;
+  --y: center;
   background-position: var(--x) var(--y) !important;
 }
