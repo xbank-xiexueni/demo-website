@@ -80,7 +80,7 @@ const Item: FunctionComponent<
         </Box>
       </Flex>
       <Collapse in={flag} animateOpacity>
-        <Text mt='20px' fontWeight={'200'} opacity={0.8}>
+        <Text mt='20px' fontWeight={300} opacity={0.8}>
           {text}
         </Text>
       </Collapse>

@@ -329,7 +329,7 @@ const Content3 = () => {
                 >
                   {title}
                 </Heading>
-                <Text fontWeight={200} opacity={0.8}>
+                <Text fontWeight={300} opacity={0.8}>
                   {text}
                 </Text>
               </Box>
