@@ -79,7 +79,7 @@ const Content4: FunctionComponent<{
             borderColor={'font.primary'}
             borderWidth={1}
             mt={{
-              md: '300px',
+              md: '52px',
               sm: '24px',
               xs: '24px',
             }}
@@ -90,12 +90,6 @@ const Content4: FunctionComponent<{
               borderColor: 'green.1',
               color: 'black.2',
             }}
-            position={{
-              md: 'absolute',
-              sm: 'static',
-              xs: 'static',
-            }}
-            bottom={'80px'}
             onClick={() => {
               // 打开邮箱
               if (typeof window === 'undefined') return;

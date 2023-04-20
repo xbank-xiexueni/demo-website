@@ -250,7 +250,7 @@ const Content3 = () => {
                   <Heading fontSize={'28px'} mb='20px' fontWeight={400}>
                     {item.title}
                   </Heading>
-                  <Text>{item.text}</Text>
+                  <Text opacity={0.8}>{item.text}</Text>
                 </Box>
               </Box>
             ))}
@@ -329,7 +329,7 @@ const Content3 = () => {
                 >
                   {title}
                 </Heading>
-                <Text fontWeight={300} opacity={0.8}>
+                <Text fontWeight={200} opacity={0.8}>
                   {text}
                 </Text>
               </Box>

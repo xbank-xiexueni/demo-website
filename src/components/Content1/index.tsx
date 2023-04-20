@@ -133,11 +133,19 @@ const Content1: FunctionComponent<{
               <Flex
                 position={'absolute'}
                 top={{
-                  lg: `${(height || 982) - 80 - 160}px`,
+                  xl:
+                    minHeight * 0.9 < height
+                      ? 'unset'
+                      : `${(height || 982) - 80 - 160}px`,
+                  lg:
+                    minHeight < height
+                      ? 'unset'
+                      : `${(height || 982) - 80 - 160}px`,
                   md: 'unset',
                 }}
                 bottom={{
-                  lg: 'unset',
+                  xl: minHeight * 0.9 < height ? '80px' : `unset`,
+                  lg: minHeight < height ? '80px' : `unset`,
                   md: '80px',
                 }}
                 justifyContent={'space-between'}

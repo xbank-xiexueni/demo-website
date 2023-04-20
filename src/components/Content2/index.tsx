@@ -139,7 +139,7 @@ const Content2 = () => {
               >
                 Building Trust in the Crypto Frontier
               </Heading>
-              <Text>
+              <Text opacity={0.8}>
                 Established on a solid foundation with years of experience in
                 traditional finance, PrimeX has a proven track record of
                 excellence in the payment and FX sector. As the financial
@@ -259,7 +259,7 @@ const Content2 = () => {
                       >
                         {title}
                       </Heading>
-                      <Text>{text}</Text>
+                      <Text opacity={0.8}>{text}</Text>
                     </Box>
                   </Fade>
                 ))}
