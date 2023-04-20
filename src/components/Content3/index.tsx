@@ -6,6 +6,7 @@ import {
   Heading,
   FlexProps,
   ImageProps,
+  chakra,
 } from '@chakra-ui/react';
 import React, { useEffect, useRef, useState } from 'react';
 
@@ -163,7 +164,8 @@ const Content3 = () => {
     };
   }, []);
 
-  const [slideIndex, setSlideIndex] = useState(0);
+  const [slideIndex1, setSlideIndex1] = useState(0);
+  const [slideIndex2, setSlideIndex2] = useState(0);
   const sliderRef1 = useRef(null);
   const sliderRef2 = useRef(null);
 
@@ -235,7 +237,7 @@ const Content3 = () => {
           <Slider
             {...settings}
             ref={sliderRef2}
-            beforeChange={(current, next) => setSlideIndex(next)}
+            beforeChange={(current, next) => setSlideIndex2(next)}
           >
             {SUPPORTS.map((item) => (
               <Box
@@ -263,24 +265,45 @@ const Content3 = () => {
               sm: 'none',
               xs: 'flex',
             }}
+            borderBottomColor="rgba(1, 224, 181, 0.05)"
+            borderBottomWidth={2}
+            position="relative"
           >
             {[0, 1, 2, 3, 4, 5].map((item) => (
               <Flex
                 cursor={'pointer'}
-                onClick={() => {
+                w={'16.6%'}
+                key={item}
+                h="2px"
+                onClick={(e) => {
+                  console.log('aa');
                   if (!sliderRef2.current) return;
                   // @ts-ignore
                   sliderRef2.current?.slickGoTo(item);
                 }}
-                w={'16.6%'}
-                key={item}
-                h="2px"
-                transition={'all 0.3s'}
-                bgColor={
-                  slideIndex === item ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
-                }
-              />
+              ></Flex>
             ))}
+            <Box
+              left={
+                slideIndex2 === 1
+                  ? `${1 * 16.6}%`
+                  : slideIndex2 === 2
+                  ? `${2 * 16.6}%`
+                  : slideIndex2 === 3
+                  ? `${3 * 16.6}%`
+                  : slideIndex2 === 4
+                  ? `${4 * 16.6}%`
+                  : slideIndex2 === 5
+                  ? `${5 * 16.6}%`
+                  : 0
+              }
+              w="16.6%"
+              position={'absolute'}
+              bgColor={'green.1'}
+              transition={'all 0.5s'}
+              h="2px"
+              bottom="-2px"
+            />
           </Flex>
         </Flex>
 
@@ -296,7 +319,7 @@ const Content3 = () => {
             {...settings}
             slidesToScroll={2}
             ref={sliderRef1}
-            beforeChange={(current, next) => setSlideIndex(next)}
+            beforeChange={(current, next) => setSlideIndex1(next)}
           >
             {SUPPORTS.map((item) => (
               <Box
@@ -322,24 +345,35 @@ const Content3 = () => {
               sm: 'flex',
               xs: 'none',
             }}
+            borderBottomColor="rgba(1, 224, 181, 0.05)"
+            borderBottomWidth={2}
+            position="relative"
           >
             {[0, 2, 4].map((item) => (
               <Flex
                 cursor={'pointer'}
-                onClick={() => {
+                w={'33.3%'}
+                key={item}
+                h="2px"
+                onClick={(e) => {
+                  console.log('aa');
                   if (!sliderRef1.current) return;
                   // @ts-ignore
                   sliderRef1.current?.slickGoTo(item);
                 }}
-                w={'33.3%'}
-                key={item}
-                h="2px"
-                transition={'all 0.3s'}
-                bgColor={
-                  slideIndex === item ? 'green.1' : 'rgba(1, 224, 181, 0.05)'
-                }
-              />
+              ></Flex>
             ))}
+            <Box
+              left={
+                slideIndex1 === 2 ? '33.3%' : slideIndex1 === 4 ? '66.6%' : 0
+              }
+              w="33.3%"
+              position={'absolute'}
+              bgColor={'green.1'}
+              transition={'all 0.5s'}
+              h="2px"
+              bottom="-2px"
+            />
           </Flex>
         </Flex>
 
