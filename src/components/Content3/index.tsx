@@ -327,9 +327,9 @@ const Content3 = () => {
               <Flex
                 cursor={'pointer'}
                 onClick={() => {
-                  if (!sliderRef2.current) return;
+                  if (!sliderRef1.current) return;
                   // @ts-ignore
-                  sliderRef2.current?.slickGoTo(item);
+                  sliderRef1.current?.slickGoTo(item);
                 }}
                 w={'33.3%'}
                 key={item}
