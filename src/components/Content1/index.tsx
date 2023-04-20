@@ -12,7 +12,12 @@ import './index.css';
 import scrollJson from '../../constants/Scroll-helper.json';
 
 export const CONTENT1_HEIGHT = 982;
-const Content1: FunctionComponent<{ windowW: number }> = ({ windowW }) => {
+const Content1: FunctionComponent<{
+  windowSize: {
+    width: number;
+    height: number;
+  };
+}> = ({ windowSize: { width, height } }) => {
   const [enterX, setEnterX] = useState(0);
   const [currentX, setCurrentX] = useState(0);
 
@@ -39,9 +44,9 @@ const Content1: FunctionComponent<{ windowW: number }> = ({ windowW }) => {
   // }, []);
 
   const minHeight = useMemo(() => {
-    if (!windowW) return 982;
-    return (windowW * 982) / 1440;
-  }, [windowW]);
+    if (!width) return 982;
+    return (width * 982) / 1440;
+  }, [width]);
 
   return (
     <Box position={'relative'}>
@@ -88,7 +93,11 @@ const Content1: FunctionComponent<{ windowW: number }> = ({ windowW }) => {
             w='100vw'
             m={'0 auto'}
             overflow={'hidden'}
-            minH={`${minHeight}px`}
+            minH={{
+              xl: `${minHeight * 0.9}px`,
+              lg: `${minHeight}px`,
+              md: `${minHeight}px`,
+            }}
             backgroundSize={'125%'}
             id='bgx'
             backgroundRepeat={'no-repeat'}
@@ -100,10 +109,8 @@ const Content1: FunctionComponent<{ windowW: number }> = ({ windowW }) => {
               if (!bgx) return;
               const cliX =
                 parseInt(bgx.style.backgroundPosition.split(' ')[0]) || 0;
-
               // -100 100
               const currX = cliX + (e.clientX - enterX) * 0.2;
-              console.log('🚀 ~ file: index.tsx:106 ~ currX:', currX);
               if (currX > 0) {
                 setCurrentX(0);
               } else if (currX < -150) {
@@ -125,7 +132,14 @@ const Content1: FunctionComponent<{ windowW: number }> = ({ windowW }) => {
             <MyContainer position={'relative'}>
               <Flex
                 position={'absolute'}
-                bottom={'80px'}
+                top={{
+                  lg: `${(height || 982) - 80 - 160}px`,
+                  md: 'unset',
+                }}
+                bottom={{
+                  lg: 'unset',
+                  md: '80px',
+                }}
                 justifyContent={'space-between'}
                 alignItems={'flex-end'}
               >

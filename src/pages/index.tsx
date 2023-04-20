@@ -27,23 +27,32 @@ function debounce(func: () => void, wait: number) {
 const IndexPage = () => {
   // const { t, changeLanguage } = useI18next();
   // const { innerHeight } = window;
-  const [windowW, setWindowW] = React.useState(0);
+  const [windowSize, setWindowSize] = React.useState({
+    width: 0,
+    height: 0,
+  });
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
     const windowWidth =
       document.documentElement.clientWidth || document?.body?.clientWidth;
-    setWindowW(windowWidth);
+    const windowHeight =
+      document.documentElement.clientHeight || document?.body?.clientHeight;
+    setWindowSize({
+      width: windowWidth,
+      height: windowHeight,
+    });
     addEventListener(
       'resize',
       debounce(() => {
         const windowWidth =
           document.documentElement.clientWidth || document?.body?.clientWidth;
-        console.log(
-          '🚀 ~ file: index.tsx:25 ~ addEventListener ~ windowWidth:',
-          windowWidth
-        );
-        setWindowW(windowWidth);
+        const windowHeight =
+          document.documentElement.clientHeight || document?.body?.clientHeight;
+        setWindowSize({
+          width: windowWidth,
+          height: windowHeight,
+        });
       }, 500)
     );
     return () => {
@@ -54,13 +63,13 @@ const IndexPage = () => {
     <Box>
       {/* <Header /> */}
 
-      <Content1 windowW={windowW} />
+      <Content1 windowSize={windowSize} />
 
       <Content2 />
 
       <Content3 />
 
-      <Content4 windowW={windowW} />
+      <Content4 windowSize={windowSize} />
 
       <Content5 />
 

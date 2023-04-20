@@ -5,16 +5,21 @@ import MyContainer from '../container';
 import Fade from 'react-reveal/Fade';
 import useHover from 'ahooks/lib/useHover';
 
-const Content4: FunctionComponent<{ windowW: number }> = ({ windowW }) => {
+const Content4: FunctionComponent<{
+  windowSize: {
+    width: number;
+    height: number;
+  };
+}> = ({ windowSize: { width } }) => {
   const height = useMemo(() => {
-    if (!windowW) return 748;
-    return (windowW * 748) / 1440;
-  }, [windowW]);
+    if (!width) return 748;
+    return (width * 748) / 1440;
+  }, [width]);
 
   const mobileHeight = useMemo(() => {
-    if (!windowW) return 748;
-    return (windowW * 748) / 390;
-  }, [windowW]);
+    if (!width) return 748;
+    return (width * 748) / 390;
+  }, [width]);
 
   const ref = useRef(null);
   const isHovering = useHover(ref);
@@ -24,6 +29,8 @@ const Content4: FunctionComponent<{ windowW: number }> = ({ windowW }) => {
       backgroundSize={'cover'}
       w='100vw'
       h={{
+        xl: `${height * 0.9}px`,
+        lg: `${height}px`,
         md: `${height}px`,
         sm: `${mobileHeight}px`,
         xs: `${mobileHeight}px`,
