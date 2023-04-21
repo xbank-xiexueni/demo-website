@@ -2,7 +2,7 @@ import { Box, Button, Flex, Heading } from '@chakra-ui/react';
 import React, { FunctionComponent, useMemo, useRef } from 'react';
 import bg from '../../images/content4-bg.png';
 import MyContainer from '../container';
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 import useHover from 'ahooks/lib/useHover';
 
 const Content4: FunctionComponent<{
@@ -52,7 +52,7 @@ const Content4: FunctionComponent<{
             sm: 'flex-start',
           }}
         >
-          <Fade bottom opposite cascade duration={1500} distance='3000px'>
+          <Fade direction='up' triggerOnce>
             <Heading
               fontSize={{
                 md: '40px',

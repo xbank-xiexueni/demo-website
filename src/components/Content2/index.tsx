@@ -12,8 +12,7 @@ import img6 from '../../images/content2/6.svg';
 import payImg from '../../images/content2/pay.svg';
 import googleImg from '../../images/content2/google.svg';
 import seqImg from '../../images/content2/seq.svg';
-// t
-import Fade from 'react-reveal/Fade';
+import { Fade } from 'react-awesome-reveal';
 
 const STEPS = [
   {
@@ -82,14 +81,13 @@ const Content2 = () => {
         }}
       >
         {/* 1 */}
-        <Fade bottom opposite cascade duration={1500}>
+        <Fade direction='up' triggerOnce>
           <Flex
             py={{
               md: '120px',
               sm: '40px',
               xs: '40px',
             }}
-            id='children'
             mb={{
               md: 0,
               sm: '40px',
@@ -154,10 +152,11 @@ const Content2 = () => {
               </Text>
             </Box>
           </Flex>
+        </Fade>
 
-          {/* 2 */}
+        {/* 2 */}
+        <Fade direction='up' triggerOnce>
           <Flex
-            className='foo-bottom2'
             justifyContent={'space-between'}
             flexWrap={{
               md: 'nowrap',
@@ -216,6 +215,7 @@ const Content2 = () => {
                 are available 24/7 to help you navigate the dynamic crypto
                 markets.
               </Heading>
+
               <Flex
                 mt='100px'
                 gap={{
@@ -226,8 +226,14 @@ const Content2 = () => {
                 flexWrap={'wrap'}
               >
                 {STEPS.map(({ svg, title, text }) => (
-                  <Fade key={title} bottom opposite cascade duration={1500}>
+                  <Fade
+                    direction='up'
+                    cascade
+                    // @ts-ignore
+                    triggerOnce
+                  >
                     <Box
+                      key={title}
                       borderTop={'1px solid rgba(235, 240, 255, 0.3)'}
                       pt='32px'
                       pb={{
